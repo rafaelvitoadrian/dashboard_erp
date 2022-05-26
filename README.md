@@ -1,3 +1,12 @@
+To DO DEVELOP
+Setelah clone jika mengalami error silahkan jalankan "composer install"
+Setelah itu jalankan "cp .env.example .enx"
+Setelah sudah jalankan "php artisan key:generate"
+Jalankan "php artisan migrate:fresh"
+Jalankan "php artisan db:seed
+php artisan serve
+Jika melakukan Push Silahkan save di branch masing-masing
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
