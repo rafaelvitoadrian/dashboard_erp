@@ -15,5 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api', 'scopes:user-view')->get('/user', function (Request $request) {
+    // return $request->user()->roles();
     return $request->user();
+    // return $request->role();
 });
+

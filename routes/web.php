@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Email\EmailController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+//Route::get('/client', function () {
+//    return view('client');
+//});
+
+Route::get('/dashboard/client', function (Request $request) {
+    return view('client',[
+        'clients' => $request->user()->clients
+    ]);
+});
 
 //Mail Routes
 Route::get('/testmail',[EmailController::class,'index']);
