@@ -9,9 +9,9 @@
             <div class="card-body">
                 @foreach($clients as $c)
                     <h3><b>Client Name :</b>{{$c->name }}</h3>
-                    <p><b>Client ID :</b>{{$c->id}}</p>
-                    <p><b>Client Redirect :</b>{{$c->redirect}}</p>
-                    <p><b>Client Secret</b>{{$c->secret}}</p>
+                    <p><b>Client ID : </b>{{$c->id}}</p>
+                    <p><b>Client Redirect : </b>{{$c->redirect}}</p>
+                    <p><b>Client Secret :</b>{{$c->secret}}</p>
                 @endforeach
             </div>
             <div class="card-body">
