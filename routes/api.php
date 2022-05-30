@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api', 'scopes:user-view')->get('/user', function (Request $request) {
-    // return $request->user()->roles();
-    return $request->user();
-    // return $request->role();
-});
+//Route::middleware('auth:api', 'scopes:user-view')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+Route::middleware('auth:api', 'scopes:user-view')->get('/user', [\App\Http\Controllers\UserController::class,'index']
+);
 

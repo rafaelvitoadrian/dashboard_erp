@@ -163,4 +163,6 @@ class Permission extends Model implements PermissionContract
     {
         return static::getPermissions($params, true)->first();
     }
+
+    protected $hidden = ['pivot'];
 }

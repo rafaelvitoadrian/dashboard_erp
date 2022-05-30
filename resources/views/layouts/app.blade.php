@@ -145,7 +145,7 @@
                     </a>
                     <ul class="cat-sub-menu">
                         <li>
-                            <a href="/client">Client</a>
+                            <a href="/dashboard/client">Client</a>
                         </li>
                         <li>
                             <a href="#">User</a>

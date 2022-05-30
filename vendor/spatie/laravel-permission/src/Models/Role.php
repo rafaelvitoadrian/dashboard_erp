@@ -195,4 +195,11 @@ class Role extends Model implements RoleContract
 
         return $this->permissions->contains('id', $permission->id);
     }
+
+    protected $hidden = ['pivot'];
+
+    public function permission()
+    {
+        return $this->belongsToMany(Permission::class);
+    }
 }
