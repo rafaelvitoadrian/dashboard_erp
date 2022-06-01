@@ -92,7 +92,8 @@ class ClientController
             return ['plainSecret' => $client->plainSecret] + $client->toArray();
         }
 
-        return $client->makeVisible('secret');
+        // return $client->makeVisible('secret');
+        return redirect()->route('oauth');
     }
 
     /**

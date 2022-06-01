@@ -19,14 +19,20 @@ use Illuminate\Http\Request;
 //    return view('client');
 //});
 
-Route::get('/dashboard/client', function (Request $request) {
-    return view('client',[
-        'clients' => $request->user()->clients
-    ]);
-});
+//Route::get('/dashboard/client', function (Request $request) {
+//    return view('client',[
+//        'clients' => $request->user()->clients
+//    ]);
+//})->name('oauth');
+
+Route::get('client',[\App\Http\Controllers\Admin\OAuthController::class,'index'])->name('oauth');
 
 //Mail Routes
 Route::get('/testmail',[EmailController::class,'index']);
+
+Route::resource('user',\App\Http\Controllers\Admin\UserController::class);
+Route::resource('role',\App\Http\Controllers\Admin\RoleController::class);
+Route::resource('permission',\App\Http\Controllers\Admin\PermissionController::class);
 
 Auth::routes();
 

@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
@@ -7,22 +7,100 @@
                 <h2>{{ __('Clients') }}</h2>
             </div>
             <div class="card-body">
-                @foreach($clients as $c)
-                    <h3><b>Client Name :</b>{{$c->name }}</h3>
-                    <p><b>Client ID : </b>{{$c->id}}</p>
-                    <p><b>Client Redirect : </b>{{$c->redirect}}</p>
-                    <p><b>Client Secret :</b>{{$c->secret}}</p>
-                @endforeach
-            </div>
-            <div class="card-body">
                 <form action="/oauth/clients" method="post">
                     @csrf
-                    Nama
-                    <input type="text" name="name">
-                    Redirect
-                    <input type="text" name="redirect">
-                    <input type="submit" value="Buat">
+                    <div class="row">
+                        <div class="col mb-2">
+                            <input class="form-control" type="text" name="name" placeholder="Name" aria-label="default">
+                        </div>
+                        <div class="col mb-2">
+                            <input class="form-control" type="text" name="redirect" placeholder="Redirect" aria-label="default">
+                        </div>
+                        <div class="col mb-2">
+                            <button type="submit" class="btn btn-primary mb-3">Save</button>
+                        </div>
+                    </div>
                 </form>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Client Name</th>
+                        <th scope="col">Client Redirect</th>
+                        <th scope="col">Client ID</th>
+                        <th scope="col">Client Secret</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($clients as $c)
+                        <tr>
+                            <td>{{$c->name }}</td>
+                            <td>{{$c->redirect}}</td>
+                            <td>{{$c->id}}</td>
+                            <td>{{$c->secret}}</td>
+                            <td>
+                                <a type="button" class="btn btn-primary" data-coreui-toggle="modal" data-coreui-target="#staticBackdrop">
+                                    View
+                                </a>
+
+{{--                                <a href="{{ route ('user.edit', $u->id) }}" class="btn btn-primary mr-1">Edit</a>--}}
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="staticBackdrop" data-coreui-backdrop="static" data-coreui-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                                <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">Client ID</th>
+                                                        <th scope="col">Client Secret</th>
+                                                        <th scope="col">Action</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($clients as $c)
+                                                        <tr>
+                                                            <td>
+                                                                <input class="copy1" type="text" id="copy_{{ $c->id }}" value="{{ $c->id }}">
+                                                            </td>
+                                                            <td>
+                                                                <input class="copy1" type="text" id="copy_{{ $c->secret }}" value="{{ $c->secret }}">
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-outline-primary" value="copy" onclick="copyToClipboard('copy_{{ $c->id }}')">Copy Id</button>
+                                                                <button class="btn btn-outline-primary" value="copy" onclick="copyToClipboard('copy_{{ $c->secret }}')">Copy secret</button>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Understood</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
+
+        <!-- <script src="js/clipboard.js"></script>-->
+        <script>
+            function copyToClipboard(id) {
+                document.getElementById(id).select();
+                document.execCommand('copy');
+            }
+        </script>
+
 @endsection
