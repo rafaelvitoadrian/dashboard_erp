@@ -9,7 +9,7 @@
             <div class="card-body">
                 <form action="/oauth/clients" method="post">
                     @csrf
-                    <div class="row">
+                    <div class="row mb-2">
                         <div class="col mb-2">
                             <input class="form-control" type="text" name="name" placeholder="Name" aria-label="default">
                         </div>
@@ -17,7 +17,7 @@
                             <input class="form-control" type="text" name="redirect" placeholder="Redirect" aria-label="default">
                         </div>
                         <div class="col mb-2">
-                            <button type="submit" class="btn btn-primary mb-3">Save</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </div>
                 </form>
@@ -25,7 +25,7 @@
                     <thead>
                     <tr>
                         <th scope="col">Client Name</th>
-                        <th scope="col">Client Redirect</th>
+{{--                        <th scope="col">Client Redirect</th>--}}
                         <th scope="col">Client ID</th>
                         <th scope="col">Client Secret</th>
                         <th scope="col">Action</th>
@@ -35,23 +35,27 @@
                     @foreach($clients as $c)
                         <tr>
                             <td>{{$c->name }}</td>
-                            <td>{{$c->redirect}}</td>
+{{--                            <td>{{$c->redirect}}</td>--}}
                             <td>{{$c->id}}</td>
                             <td>{{$c->secret}}</td>
                             <td>
-                                <a type="button" class="btn btn-primary" data-coreui-toggle="modal" data-coreui-target="#staticBackdrop">
-                                    View
-                                </a>
 
-{{--                                <a href="{{ route ('user.edit', $u->id) }}" class="btn btn-primary mr-1">Edit</a>--}}
-
+                                <form action="{{route ('client.destroy', $c->id)  }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" data-id="{{$c->id}}" class="btn btn-primary" data-coreui-toggle="modal" data-coreui-target="#staticBackdrop">
+                                        View
+                                    </button>
+                                    <button class="btn btn-danger" value="submit">
+                                        Delete
+                                    </button>
+                                </form>
                                 <!-- Modal -->
                                 <div class="modal fade" id="staticBackdrop" data-coreui-backdrop="static" data-coreui-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                                                <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                                                <h5 class="modal-title" id="staticBackdropLabel">Client Detail</h5>
                                             </div>
                                             <div class="modal-body">
                                                 <table class="table table-striped">
@@ -66,7 +70,7 @@
                                                     @foreach($clients as $c)
                                                         <tr>
                                                             <td>
-                                                                <input class="copy1" type="text" id="copy_{{ $c->id }}" value="{{ $c->id }}">
+                                                                <input class="copy1" type="text" id="copy_{{ $c->id }}" value="{{ $c->id }}" >
                                                             </td>
                                                             <td>
                                                                 <input class="copy1" type="text" id="copy_{{ $c->secret }}" value="{{ $c->secret }}">
@@ -82,7 +86,6 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Understood</button>
                                             </div>
                                         </div>
                                     </div>

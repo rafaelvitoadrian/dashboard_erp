@@ -25,7 +25,8 @@ use Illuminate\Http\Request;
 //    ]);
 //})->name('oauth');
 
-Route::get('client',[\App\Http\Controllers\Admin\OAuthController::class,'index'])->name('oauth');
+Route::get('clients',[\App\Http\Controllers\Admin\OAuthController::class,'index'])->name('oauth');
+Route::resource('client',\App\Http\Controllers\Admin\OAuthController::class);
 
 //Mail Routes
 Route::get('/testmail',[EmailController::class,'index']);
