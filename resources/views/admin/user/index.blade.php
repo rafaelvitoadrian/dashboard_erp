@@ -36,7 +36,7 @@
                                             @endcan
                                             @csrf
                                             @method('DELETE')
-                                            @can('User delete')
+                                            @can('Users delete')
                                             <Button type="submit" class="btn btn-danger">Delete</Button>
                                             @endcan
                                     </form>

@@ -7,6 +7,7 @@
                 <h2>{{ __('Clients') }}</h2>
             </div>
             <div class="card-body">
+                @can('Permissions create')
                 <form action="/oauth/clients" method="post">
                     @csrf
                     <div class="row mb-2">
@@ -21,6 +22,8 @@
                         </div>
                     </div>
                 </form>
+                @endcan
+                    @can('Permissions access')
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -46,9 +49,11 @@
                                     <button type="button" data-id="{{$c->id}}" class="btn btn-primary" data-coreui-toggle="modal" data-coreui-target="#staticBackdrop">
                                         View
                                     </button>
+                                    @can('Permissions delete')
                                     <button class="btn btn-danger" value="submit">
                                         Delete
                                     </button>
+                                    @endcan
                                 </form>
                                 <!-- Modal -->
                                 <div class="modal fade" id="staticBackdrop" data-coreui-backdrop="static" data-coreui-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -95,6 +100,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                        @endcan
             </div>
         </div>
 
