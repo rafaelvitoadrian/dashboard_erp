@@ -13,6 +13,15 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
+
+    function __construct()
+    {
+        $this->middleware('role_or_permission:Permissions access|Permissions create|Permissions edit|Permissions delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Permissions create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Permissions edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Permissions delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $permission= Permission::latest()->get();

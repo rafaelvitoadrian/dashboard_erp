@@ -19,7 +19,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>ERP | Dashboard</title>
+    <title>ERP</title>
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/favicon/apple-icon-57x57.png') }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('assets/favicon/apple-icon-60x60.png') }}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('assets/favicon/apple-icon-72x72.png') }}">
@@ -72,7 +72,7 @@
         </svg>
       </div>
       <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
-        <li class="nav-item"><a class="nav-link" href="index.html">
+        <li class="nav-item"><a class="nav-link" href="/">
             <svg class="nav-icon">
               <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
             </svg> Dashboard<span class="badge badge-sm bg-info ms-auto">NEW</span></a></li>
@@ -164,26 +164,34 @@
             </svg> Widgets<span class="badge badge-sm bg-info ms-auto">NEW</span></a></li>
         <li class="nav-divider"></li>
         <li class="nav-title">Settings</li>
+        @canany('Users access','Users add','Users edit','Users delete')
         <li class="nav-item mt-auto"><a class="nav-link" href="{{ Route('user.index') }}">
             <svg class="nav-icon">
               <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-description') }}"></use>
             </svg> User Management</a>
         </li>
+        @endcan
+        @canany('Roles access','Roles add','Roles edit','Roles delete')
         <li class="nav-item mt-auto"><a class="nav-link" href="{{Route('role.index')}}">
           <svg class="nav-icon">
             <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-description') }}"></use>
           </svg> Role Management</a>
         </li>
+          @endcan
+          @canany('Permissions access','Permissions add','Permissions edit','Permissions delete')
           <li class="nav-item mt-auto"><a class="nav-link" href="{{Route('permission.index')}}">
           <svg class="nav-icon">
             <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-description') }}"></use>
           </svg> Permissions Management</a>
         </li>
+          @endcan
+          @canany('OAuth access','OAuth add','OAuth edit','OAuth delete')
           <li class="nav-item mt-auto"><a class="nav-link" href="{{route('oauth')}}">
           <svg class="nav-icon">
             <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-description') }}"></use>
           </svg> OAuth 2.0 Management</a>
           </li>
+          @endcan
         </ul>
       <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
     </div>
@@ -199,8 +207,10 @@
               <use xlink:href="{{ asset('assets/brand/coreui.svg#full') }}"></use>
             </svg></a>
           <ul class="header-nav d-none d-md-flex">
-            <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
+            <li class="nav-item"><a class="nav-link" href="/">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('user.index') }}">Users</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('role.index') }}">Roles</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('permission.index') }}">Permissions</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
           </ul>
           <ul class="header-nav ms-auto">

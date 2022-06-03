@@ -15,6 +15,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
+
+    function __construct()
+    {
+        $this->middleware('role_or_permission:Users access|Users create|Users edit|Users delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Users create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Users edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Users delete', ['only' => ['destroy']]);
+    }
+
+
     public function index()
     {
         $datauser = User::all();

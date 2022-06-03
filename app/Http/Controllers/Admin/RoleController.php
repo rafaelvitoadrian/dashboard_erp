@@ -14,6 +14,15 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
+
+    function __construct()
+    {
+        $this->middleware('role_or_permission:Roles access|Roles create|Roles edit|Roles delete', ['only' => ['index','show']]);
+        $this->middleware('role_or_permission:Roles create', ['only' => ['create','store']]);
+        $this->middleware('role_or_permission:Roles edit', ['only' => ['edit','update']]);
+        $this->middleware('role_or_permission:Roles delete', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $role= Role::get();

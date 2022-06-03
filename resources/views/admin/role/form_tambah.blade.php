@@ -23,8 +23,8 @@
                             <div class="col-sm-10">
                                 @foreach($permissions as $permission)
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="permissions[]" id="gridRadios1" value="{{$permission->id}}">
-                                        <label class="form-check-label" for="gridRadios1">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" name="permissions[]" id="permissions" value="{{$permission->id}}">
                                             {{ $permission->name }}
                                         </label>
                                     </div>

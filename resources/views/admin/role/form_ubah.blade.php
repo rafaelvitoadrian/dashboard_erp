@@ -24,9 +24,10 @@
                             <div class="col-sm-10">
                                 @foreach($permissions as $permission)
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="permissions[]" id="gridRadios1" value="{{$permission->id}}" @if(count($role->permissions->where('id',$permission->id)))
-                                        checked> @endif
-                                        <label class="form-check-label" for="gridRadios1">
+
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" name="permissions[]" id="gridRadios1" value="{{$permission->id}}" @if(count($role->permissions->where('id',$permission->id)))
+                                            checked @endif>
                                             {{ $permission->name }}
                                         </label>
                                     </div>

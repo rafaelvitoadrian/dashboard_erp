@@ -18,16 +18,31 @@ class UsersSeeder extends Seeder
     {
         $admin = User::create([
             'name'=>'Admin',
-            'email'=>'admin@gmail.com',
+            'email'=>'admin@kelompok2.com',
             'password'=>bcrypt('admin123'),
         ]);
 
-        $admin_role = Role::create(['name' => 'admin']);
+        $admin_role = Role::create(['name' => 'superadmin']);
 
-        $permission = Permission::create(['name' => 'Post access']);
-        $permission = Permission::create(['name' => 'Post edit']);
-        $permission = Permission::create(['name' => 'Post create']);
-        $permission = Permission::create(['name' => 'Post delete']);
+        $permission = Permission::create(['name' => 'Users access']);
+        $permission = Permission::create(['name' => 'Users edit']);
+        $permission = Permission::create(['name' => 'Users create']);
+        $permission = Permission::create(['name' => 'Users delete']);
+
+        $permission = Permission::create(['name' => 'Roles access']);
+        $permission = Permission::create(['name' => 'Roles edit']);
+        $permission = Permission::create(['name' => 'Roles create']);
+        $permission = Permission::create(['name' => 'Roles delete']);
+
+        $permission = Permission::create(['name' => 'Permissions access']);
+        $permission = Permission::create(['name' => 'Permissions edit']);
+        $permission = Permission::create(['name' => 'Permissions create']);
+        $permission = Permission::create(['name' => 'Permissions delete']);
+        
+        $permission = Permission::create(['name' => 'OAuth access']);
+        $permission = Permission::create(['name' => 'OAuth edit']);
+        $permission = Permission::create(['name' => 'OAuth create']);
+        $permission = Permission::create(['name' => 'OAuth delete']);
 
         $admin->assignRole($admin_role);
 

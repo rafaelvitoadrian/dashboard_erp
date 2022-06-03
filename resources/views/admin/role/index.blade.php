@@ -4,11 +4,15 @@
         <div class="card">
             <div class="card-body">
                 <h1>Role Management</h1>
+                @can('Roles create')
                 <div class="row">
                     <div class="col-md-12 mb-4 ml-4">
                         <a href="{{route('role.create')}}" class="btn btn-primary btn-md"> Add Role</a>
                     </div>
                 </div>
+                @endcan
+                @can('Roles access')
+                @can('Users access')
                 <table class="table table-striped table-hover">
                     <tr>
                         <th>Name Role</th>
@@ -25,14 +29,20 @@
                             </td>
                             <td>
                                     <form action="{{route ('role.destroy', $r->id)  }}" method="POST">
+                                        @can('Roles edit')
                                             <a href="{{ route ('role.edit', $r->id) }}" class="btn btn-primary mr-1 mb-1">Edit</a>
-                                        @csrf
+                                        @endcan
+                                            @csrf
                                         @method('DELETE')
+                                            @can('Roles delete')
                                             <Button type="submit" class="btn btn-danger">Delete</Button>
+                                                @endcan
                                     </form>
                             </td>
                         </tr>
                     @endforeach
                 </table>
+                    @endcan
+                @endcan
             </div>
 @endsection
