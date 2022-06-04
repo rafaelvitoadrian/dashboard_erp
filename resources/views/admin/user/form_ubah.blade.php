@@ -32,6 +32,16 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="input-group mb-4"><span class="input-group-text">
+                      <svg class="icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                      </svg></span>
+                        <select class="form-select" id="inputGroupSelect01" name="status">
+                            @foreach(["active" => "Active", "pending" => "Pending","deactive" => "Deactive"] AS $statusWay => $statusLabel)
+                                <option value="{{ $statusWay }}" {{ old("contact_way", $user->status) == $statusWay ? "selected" : "" }}>{{ $statusLabel }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <button class="btn btn-block btn-success" type="submit">Update</button>
                     <a href="{{route('user.index')}}" class="btn btn-danger">Cancel</a>
                 </form>

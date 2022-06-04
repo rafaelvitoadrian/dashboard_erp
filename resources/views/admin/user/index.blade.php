@@ -18,6 +18,7 @@
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Role</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                         @foreach($user as $u)
@@ -28,6 +29,15 @@
                                     @foreach($u->roles as $role)
                                         <span> {{$role->name}}</span>
                                     @endforeach
+                                </td>
+                                <td>
+                                    @if($u->status=='pending')
+                                    <button class="btn btn-outline-warning">{{$u->status}}</button>
+                                    @elseif($u->status=='active')
+                                    <button class="btn btn-outline-success">{{$u->status}}</button>
+                                    @else
+                                    <button class="btn btn-outline-danger">{{$u->status}}</button>
+                                    @endif
                                 </td>
                                 <td>
                                     <form action="{{route ('user.destroy', $u->id)  }}" method="POST">

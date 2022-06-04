@@ -81,9 +81,10 @@ class UserController extends Controller
     public function edit($id)
     {
         $datauser = User::find($id);
+        $datastatus = User::all();
 
         $role = Role::get();
-        return view ('admin.user.form_ubah', ['user' => $datauser,'roles'=>$role]);
+        return view ('admin.user.form_ubah', ['user' => $datauser,'roles'=>$role,'status'=>$datastatus]);
     }
 
     /**
@@ -98,6 +99,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->status = $request->status;
         $user->save();
 
         $user->syncRoles($request->roles);

@@ -16,7 +16,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>CoreUI Free Bootstrap Admin Template</title>
+    <title>ERP | Register </title>
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/favicon/apple-icon-57x57.png') }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('assets/favicon/apple-icon-60x60.png') }}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('assets/favicon/apple-icon-72x72.png') }}">
@@ -64,7 +64,7 @@
           <div class="col-md-6">
             <div class="card mb-4 mx-4">
               <div class="card-body p-4">
-                
+
                 <form class="sign-up-form form" action="{{ route('register') }}" method="POST">
                   @csrf
                   <h1>Register</h1>

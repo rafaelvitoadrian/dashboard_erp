@@ -21,3 +21,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api', 'scopes:user-view')->get('/user', [\App\Http\Controllers\UserController::class,'index']
 );
 
+Route::get('count', [\App\Http\Controllers\API\UserController::class, 'SumActiveUser']);
+
