@@ -12,7 +12,8 @@ class UserController extends Controller
 {
     public function SumActiveUser()
     {
-        $data = DB::table('users')->count();
+        $data = User::where('status','active')->count();
+
         if($data){
             return ApiFormatter::createApi(200, 'Success', $data);
         }else{
