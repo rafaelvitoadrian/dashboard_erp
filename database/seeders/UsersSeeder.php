@@ -23,6 +23,7 @@ class UsersSeeder extends Seeder
         ]);
 
         $admin_role = Role::create(['name' => 'superadmin']);
+        $guest = Role::create(['name' => 'guest']);
 
         $permission = Permission::create(['name' => 'Users access']);
         $permission = Permission::create(['name' => 'Users edit']);
@@ -47,5 +48,6 @@ class UsersSeeder extends Seeder
         $admin->assignRole($admin_role);
 
         $admin_role->givePermissionTo(Permission::all());
+        // $guest->givePermissionTo(Permission::where(''));
     }
 }
