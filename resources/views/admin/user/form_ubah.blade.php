@@ -22,6 +22,12 @@
                       </svg></span>
                         <input class="form-control" type="email" name="email" value="{{$user->email}}" placeholder="Email" required>
                     </div>
+                    <div class="input-group mb-3"><span class="input-group-text">
+                      <svg class="icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
+                      </svg></span>
+                        <input class="form-control" type="text" name="token" value="{{$user->api_token}}" placeholder="Email" >
+                    </div>
                     <div class="input-group mb-4"><span class="input-group-text">
                       <svg class="icon">
                         <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
