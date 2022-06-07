@@ -4,10 +4,13 @@
 
 @section('content')
     <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <h1>Permissions Management</h1>
-                <div class="row mt-2 mb-2">
+        <div class="card mb-5">
+        <div class="card-header py-3">
+            <h1>Permissions Management</h1>
+            <p class="text-medium-emphasis">Manage Permissions</p>
+        </div>
+            <div class="card-body px-4">
+                <div class="row mb-3">
                     @can('Permissions create')
                     <div class="col-md-3">
                             <a href="{{route('permission.create')}}" class="btn btn-primary"> Tambah</a>

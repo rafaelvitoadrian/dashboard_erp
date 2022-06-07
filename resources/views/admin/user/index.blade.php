@@ -5,9 +5,11 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-body">
-                <h1>User Management</h1>
-                <p class="text-medium-emphasis">Manage User</p>
+        <div class="card-header py-3">
+            <h1>Users Management</h1>
+            <p class="text-medium-emphasis">Manage Users</p>
+        </div>
+            <div class="card-body px-4">
                 @can('Users create')
                 <div class="row">
                     <div class="col-md-12 mb-2 ml-4">

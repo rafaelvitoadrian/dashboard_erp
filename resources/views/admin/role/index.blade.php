@@ -5,8 +5,11 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-body">
-                <h1>Role Management</h1>
+        <div class="card-header py-3">
+            <h1>Roles Management</h1>
+            <p class="text-medium-emphasis">Manage Roles</p>
+        </div>
+            <div class="card-body px-4">
                 @can('Roles create')
                 <div class="row">
                     <div class="col-md-12 mb-4 ml-4">
@@ -27,7 +30,7 @@
                             <td>{{ $r->name }}</td>
                             <td>
                                 @foreach($r->permissions as $p)
-                                    <button  class="btn btn-secondary btn-sm mt-2 ml-2 r-2" disabled>{{$p->name}}</button>
+                                    <button  class="btn btn-primary btn-sm mt-2 ml-2 r-2" disabled>{{$p->name}}</button>
                                 @endforeach
                             </td>
                             <td>

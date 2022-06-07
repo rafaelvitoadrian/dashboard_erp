@@ -4,42 +4,38 @@
 
     <div class="container">
         <div class="card">
-            <div class="card-body">
-                <form class="sign-up-form form" action="{{route('user.store')}}" method="POST">
-                    @csrf
-                    <h1>Account</h1>
-                    <p class="text-medium-emphasis">Add Account</p>
-                    <div class="input-group mb-3"><span class="input-group-text">
-                      <svg class="icon">
-                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
-                      </svg></span>
-                        <input class="form-control" type="text" placeholder="Name" name="name" required>
-                    </div>
-                    <div class="input-group mb-3"><span class="input-group-text">
-                      <svg class="icon">
-                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
-                      </svg></span>
-                        <input class="form-control" type="email" name="email" placeholder="Email" required>
-                    </div>
-                    <div class="input-group mb-3"><span class="input-group-text">
-                      <svg class="icon">
-                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                      </svg></span>
-                        <input class="form-control" type="password" name="password" placeholder="Password" required>
-                    </div>
-                    <div class="input-group mb-4"><span class="input-group-text">
-                      <svg class="icon">
-                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                      </svg></span>
-                        <select class="form-select" id="inputGroupSelect01" name="roles[]">
-                            <option selected>Role</option>
-                            @foreach($roles as $row)
+          <div class="card-header py-3">
+            <h1>User Management</h1>
+            <p class="text-medium-emphasis">Add User</p>
+        </div>    
+            <div class="card-body px-4">
+                <form action="{{route('user.store')}}" method="POST" class="row g-3">
+                  @csrf
+                  <div class="col-md-12">
+                    <label for="inputEmail4" class="form-label">Nama</label>
+                    <input type="text" class="form-control" id="inputEmail4" name="name" placeholder="Name" required>
+                  </div>
+                  <div class="col-md-12">
+                    <label for="inputAddress" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="inputAddress" name="email" placeholder="Email" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputCity" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="inputCity" name="password" placeholder="Password" required>
+                  </div>  
+                  <div class="col-md-6">
+                    <label for="inputState" class="form-label">Role</label>
+                    <select id="inputState" name="roles[]" class="form-select">
+                      <option selected>Role</option>
+                      @foreach($roles as $row)
                                 <option value="{{$row->id}}">{{$row->name}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <button class="btn btn-block btn-success" type="submit">Create</button>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Add</button>
                     <a href="{{route('user.index')}}" class="btn btn-danger">Cancel</a>
+                  </div>
                 </form>
             </div>
         </div>
