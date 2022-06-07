@@ -32,7 +32,7 @@ class GoogleController extends Controller
                     'password' => bcrypt('admin123')
                 ]);
 
-                $newUser->assignRole('user');
+                $newUser->assignRole('guest');
 
                 Auth::login($newUser);
                 return redirect()->intended('home');

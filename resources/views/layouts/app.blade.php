@@ -217,7 +217,7 @@
             @canany('Permissions access','Permissions add','Permissions edit','Permissions delete')
             <li class="nav-item"><a class="nav-link" href="{{ route('permission.index') }}">Permissions</a></li>
             @endcan
-            @canany('Permissions access','Permissions add','Permissions edit','Permissions delete')
+            @canany('OAuth access','OAuth add','OAuth edit','OAuth delete')
             <li class="nav-item"><a class="nav-link" href="{{ route('oauth') }}">OAuth 2.0</a></li>
             @endcan
             {{-- <li class="nav-item"><a class="nav-link" href="#">Settings</a></li> --}}

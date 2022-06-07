@@ -46,7 +46,7 @@
                                 <form action="{{route ('client.destroy', $c->id)  }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" data-id="{{$c->id}}" class="btn btn-primary" data-coreui-toggle="modal" data-coreui-target="#staticBackdrop">
+                                    <button type="button" data-id="{{$c->id}}" class="btn btn-primary" data-coreui-toggle="modal" data-coreui-target="#ViewClient~">
                                         View
                                     </button>
                                     @can('OAuth delete')
@@ -55,8 +55,8 @@
                                     </button>
                                     @endcan
                                 </form>
-                                <!-- Modal -->
-                                <div class="modal fade" id="staticBackdrop" data-coreui-backdrop="static" data-coreui-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <!-- Modal View -->
+                                <div class="modal fade" id="ViewClient~" data-coreui-backdrop="static" data-coreui-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -72,20 +72,20 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($clients as $c)
+                                                   
                                                         <tr>
                                                             <td>
-                                                                <input class="copy1" type="text" id="copy_{{ $c->id }}" value="{{ $c->id }}" >
+                                                                <input class="copy1" type="text" id="copy_{{ $c->id }}" value="" >
                                                             </td>
                                                             <td>
-                                                                <input class="copy1" type="text" id="copy_{{ $c->secret }}" value="{{ $c->secret }}">
+                                                                <input class="copy1" type="text" id="copy_{{ $c->secret }}" value="">
                                                             </td>
                                                             <td>
                                                                 <button class="btn btn-outline-primary" value="copy" onclick="copyToClipboard('copy_{{ $c->id }}')">Copy Id</button>
                                                                 <button class="btn btn-outline-primary" value="copy" onclick="copyToClipboard('copy_{{ $c->secret }}')">Copy secret</button>
                                                             </td>
                                                         </tr>
-                                                    @endforeach
+                                                    
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -113,3 +113,23 @@
         </script>
 
 @endsection
+<script>
+
+$(document).ready(function () {
+
+$('body').on('click', '#editCompany', function (event) {
+
+    event.preventDefault();
+    var id = $(this).data('id');
+    $.get('color/' + id + '/edit', function (data) {
+         $('#userCrudModal').html("Edit category");
+         $('#submit').val("Edit category");
+         $('#practice_modal').modal('show');
+         $('#color_id').val(data.data.id);
+         $('#name').val(data.data.name);
+     })
+});
+
+}); 
+</script>
+@endpush  

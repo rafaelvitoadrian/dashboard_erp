@@ -100,6 +100,7 @@
                       <div class="col-6">
                         <button class="btn btn-primary px-4" type="submit">Login</button>
                       </div>
+                      <a href="{{ route('google.login') }}" class="btn btn-danger">Google</a>
                       <div class="col-6 text-end">
                         <a href="{{ route('password.request') }}" class="btn btn-link px-0">Forgot Password?</a>
                         {{-- <button class="btn btn-link px-0" type="button">Forgot password?</button> --}}
