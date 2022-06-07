@@ -18,7 +18,7 @@
                     </div>
                 @endcan
                 @can('Permissions access')
-                <table class="table table-bordered table-striped">
+                <table class="table table-striped table-hover">
                     <tr>
                         <th>Nama</th>
                         <th>Aksi</th>

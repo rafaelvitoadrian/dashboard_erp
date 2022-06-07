@@ -19,7 +19,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-  <title>{{ config('app.name') }} | @yield('title') </title>
+    <title>ERP</title>
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/favicon/apple-icon-57x57.png') }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('assets/favicon/apple-icon-60x60.png') }}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('assets/favicon/apple-icon-72x72.png') }}">
@@ -62,16 +62,18 @@
     <link href="{{ asset('vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
   </head>
   <body>
-    <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
+    <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar"> 
       <div class="sidebar-brand d-none d-md-flex">
         <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-          <use xlink:href="{{ asset('assets/brand/coreui.svg#full') }}"></use>
+          <use xlink:href="assets/brand/coreui.svg#full"></use>
         </svg>
         <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
-          <use xlink:href="{{ asset('assets/brand/coreui.svg#signet') }}"></use>
+          <use xlink:href="assets/brand/coreui.svg#signet"></use>
         </svg>
       </div>
       <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
+        <li class="nav-item"><a class="nav-link" href="#">
+            <img class="nav-icon-avatar" src="{{ asset('assets/img/avatars/3.jpg') }}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
         <li class="nav-item"><a class="nav-link" href="/">
             <svg class="nav-icon">
               <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
@@ -193,7 +195,7 @@
           </li>
           @endcan
         </ul>
-      <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
+        <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
     </div>
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
       <header class="header header-sticky mb-4">
@@ -227,21 +229,13 @@
                 <svg class="icon icon-lg">
                   <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-bell') }}"></use>
                 </svg></a></li>
-            <li class="nav-item"><a class="nav-link" href="#">
-                <svg class="icon icon-lg">
-                  <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-list-rich') }}"></use>
-                </svg></a></li>
-            <li class="nav-item"><a class="nav-link" href="#">
-                <svg class="icon icon-lg">
-                  <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-envelope-open') }}"></use>
-                </svg></a></li>
           </ul>
           <ul class="header-nav ms-3">
             <li class="nav-item dropdown"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('assets/img/avatars/8.jpg') }}" alt="user@email.com"></div>
-              </a>
-              <div class="dropdown-menu dropdown-menu-end pt-0">
-                <div class="dropdown-header bg-light py-2">
+                <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('assets/img/avatars/3.jpg') }}" alt="user@email.com"></div>
+              
+              <div class="dropdown-menu dropdown-menu-end pt-2">
+                <div class="dropdown-header bg-light ">
                   <div class="fw-semibold">Settings</div>
                 </div><a class="dropdown-item" href="#">
                   <svg class="icon me-2">
@@ -282,8 +276,7 @@
       </main>
       </div>
       <footer class="footer">
-        <div><a href="https://coreui.io">CoreUI </a><a href="https://coreui.io">Bootstrap Admin Template</a> © 2022 Kelompok 2.</div>
-        <div class="ms-auto">Powered by&nbsp;<a href="https://coreui.io/docs/">Kelompok 2</a></div>
+        <div class="ms-auto">© 2022 Kelompok 2.</div>
       </footer>
     </div>
     <!-- CoreUI and necessary plugins-->

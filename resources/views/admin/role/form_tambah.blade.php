@@ -4,38 +4,23 @@
 
     <div class="container">
         <div class="card">
-
-            <div class="card-body">
-                <form action="{{route ('role.store')}}" method="post">
+            <div class="card-header py-3">
+                <h1>Role Management</h1>
+                {{-- <p>Test</p> --}}
+                <p class="text-medium-emphasis">Add Role</p>
+            </div>
+            <div class="card-body px-4">
+                <form action="{{route ('permission.store')}}" method="post">
                     @csrf
-                    <ul class="list-group">
-                        <h1>Role</h1>
-                        <p class="text-medium-emphasis">Add Role</p>
-                        <div class="row mb-3">
-                            <label for="namerole" class="col-sm-2 col-form-label">Role Name</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="name" class="form-control" id="namerole">
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <legend class="col-form-label col-sm-2 pt-0">Permissions</legend>
-                            <div class="col-sm-10">
-                                @foreach($permissions as $permission)
-                                    <div class="form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" name="permissions[]" id="permissions" value="{{$permission->id}}">
-                                            {{ $permission->name }}
-                                        </label>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </ul>
-                    <button class="btn btn-success" name="submit" type="submit">Add</button>
-                    <a href="{{route('role.index')}}" class="btn btn-danger">Cancel</a>
+                    <div class="mb-3">
+                        <label for="name" class="form-label"> <strong>Name</strong></label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Permission Name">
+                    </div>
+                    <button class="btn btn-primary" name="submit" type="submit">Add</button>
+                    <a href="{{route('permission.index')}}" class="btn btn-danger ml-3">Cancel</a>
                 </form>
             </div>
         </div>
     </div>
+
 @endsection

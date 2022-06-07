@@ -21,7 +21,7 @@
                 @can('Users access')
                 <table class="table table-striped table-hover">
                     <tr>
-                        <th>Name Role</th>
+                        <th>Name</th>
                         <th>Permissions Access</th>
                         <th>Action</th>
                     </tr>

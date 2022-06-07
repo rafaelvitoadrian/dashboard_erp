@@ -7562,8 +7562,10 @@ html:not([dir=rtl]) .offcanvas-end {
 }
 
 .propil{
-    
+    font-size: 16px;
+    font-weight:500;
     color: #151D39;
+    text-transform: capitalize !important;
 }
 
 .avatar-img {
@@ -7574,11 +7576,13 @@ html:not([dir=rtl]) .offcanvas-end {
 
 .avatar-img-profile {
     width: 100%;
-    height: 89px;
-    width: 89px;
+    height: 40px;
+    width: 40px;
     
     border-radius: 50em;
 }
+
+
 
 .avatar-status {
     position: absolute;
@@ -8304,14 +8308,12 @@ html:not([dir=rtl]) .sidebar-close {
 }
 
 .sidebar-brand {
-    padding-top: 20px;
-    padding-bottom: 10px;
-    display: flex;
-    flex: 0 0 4rem;
-    align-items: center;
-    justify-content: center;
-    color: var(--cui-sidebar-brand-color, rgba(255, 255, 255, 0.87));
-    background: var(--cui-sidebar-brand-bg, rgba(255, 255, 255, 0.2));
+  display: flex;
+  flex: 0 0 4rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--cui-sidebar-brand-color, #151D39);
+  background: var(--cui-sidebar-brand-bg, rgba(0, 0, 21, 0.2));
 }
 
 .sidebar-brand .sidebar-brand-narrow {
@@ -8547,6 +8549,27 @@ html:not([dir=rtl]) .sidebar-close {
     text-align: center;
     fill: currentColor;
     transition: inherit;
+}
+
+.sidebar-nav .nav-icon-avatar {
+    flex: 0 4 0rem;
+    height: 40px;
+    font-size: 1.25rem;
+    color: var(--cui-sidebar-nav-link-icon-color, rgba(21, 29, 57, 0.6));
+    text-align: center;
+    fill: currentColor;
+    transition: inherit;
+    border-radius: 50em;
+    margin-left: -0.25rem;
+    margin-right: 1rem;
+}
+
+.avatar-img-profile {
+    width: 100%;
+    height: 40px;
+    width: 40px;
+    
+    border-radius: 50em;
 }
 
 @media (prefers-reduced-motion: reduce) {
