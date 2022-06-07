@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Permissions Management')
+
 @section('content')
     <div class="container">
         <div class="card">
