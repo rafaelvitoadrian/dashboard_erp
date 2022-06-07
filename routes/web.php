@@ -29,15 +29,21 @@ Route::get('clients',[\App\Http\Controllers\Admin\OAuthController::class,'index'
 Route::resource('client',\App\Http\Controllers\Admin\OAuthController::class);
 
 //Mail Routes
-Route::get('/testmail',[EmailController::class,'index']);
+// Route::get('/testmail',[EmailController::class,'index']);
 
-Route::resource('user',\App\Http\Controllers\Admin\UserController::class);
-Route::resource('role',\App\Http\Controllers\Admin\RoleController::class);
-Route::resource('permission',\App\Http\Controllers\Admin\PermissionController::class);
+//Route::get('auth/google',[\App\Http\Controllers\OAuth\GoogleController::class,'redirectToGoogle'])->name('google.login');
+//Route::get('auth/google/callback',[\App\Http\Controllers\OAuth\GoogleController::class,'handleGoogleCallback'])->name('google.callback');
+
+Route::get('auth/google',[\App\Http\Controllers\OAuth\GoogleController::class,'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback',[\App\Http\Controllers\OAuth\GoogleController::class,'handleGoogleCallback'])->name('google.callback');
 
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('welcome');
+
+Route::resource('user',\App\Http\Controllers\Admin\UserController::class);
+Route::resource('role',\App\Http\Controllers\Admin\RoleController::class);
+Route::resource('permission',\App\Http\Controllers\Admin\PermissionController::class);
 
 

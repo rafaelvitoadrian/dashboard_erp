@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\OAuth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
 
 class GoogleController extends Controller
@@ -23,19 +23,22 @@ class GoogleController extends Controller
             $finduser = User::where('google_id',$user->getId())->first();
             if($finduser){
                 Auth::login($finduser);
-                return redirect()->intended('dashboard');
+                return redirect()->intended('home');
             }else{
                 $newUser = User::create([
-                   'name' => $user->getName(),
+                    'name' => $user->getName(),
                     'email' => $user->getEmail(),
                     'google_id' => $user->getId(),
                     'password' => bcrypt('admin123')
                 ]);
-                $newUser->assignRole('guest');
+
+                $newUser->assignRole('user');
+
                 Auth::login($newUser);
-                return redirect()->intended('dashboard');
+                return redirect()->intended('home');
             }
         }catch (\Throwable $throwable){
+
         }
     }
 }

@@ -24,14 +24,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'api_token',
+        'google_id',
     ];
-    // public function roles()
-    // {
-    //     return $this->hasOne('Spatie\Permission\Models\Role', 'name');
-    // }
-
-    //  protected $relations = ['roles'];
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -40,9 +34,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        "created_at",
-        "updated_at".
-        "email_verified_at",
     ];
 
     /**
