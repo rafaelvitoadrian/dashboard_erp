@@ -8,7 +8,7 @@
             <h1>User Management</h1>
             <p class="text-medium-emphasis">Update User</p>
         </div>    
-            <div class="card-body px-4">
+            <div class="card-body py-3">
                 <form action="{{route('user.update', $user->id)}}" method="POST" class="row g-3">
                   @csrf
                   @method('PUT')
@@ -37,7 +37,7 @@
                     </select>
                   </div>
                   <div class="col-12">
-                    <button type="submit" class="btn btn-primary mr-2">Add</button>
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
                     <a href="{{route('user.index')}}" class="btn btn-danger">Cancel</a>
                   </div>
                 </form>

@@ -8,7 +8,7 @@
             <h1>Permissions Management</h1>
             <p class="text-medium-emphasis">Add Permission</p>
         </div>
-            <div class="card-body px-4">
+            <div class="card-body py-3">
                 <form action="{{route ('permission.update', $permission->id)}}" method="post">
                     @csrf
                     @method('PUT')

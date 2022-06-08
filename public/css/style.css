@@ -3763,15 +3763,15 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-primary {
-    --cui-btn-border-color: #321fdb;
-    --cui-btn-color: #321fdb;
-    --cui-btn-hover-bg: #5141e0;
-    --cui-btn-hover-border-color: #4735df;
+    --cui-btn-border-color: #1EC8C8;
+    --cui-btn-color: #1EC8C8;
+    --cui-btn-hover-bg: #1EC8C8;
+    --cui-btn-hover-border-color: #1EC8C8;
     --cui-btn-hover-color: rgba(255, 255, 255, 0.87);
-    --cui-btn-active-bg: #5b4ce2;
-    --cui-btn-active-border-color: #4735df;
+    --cui-btn-active-bg: #1EC8C8;
+    --cui-btn-active-border-color: #1EC8C8;
     --cui-btn-active-color: rgba(255, 255, 255, 0.87);
-    --cui-btn-disabled-color: #321fdb;
+    --cui-btn-disabled-color: #1EC8C8;
     --cui-btn-shadow: rgba(50, 31, 219, 0.5);
 }
 
@@ -5221,7 +5221,7 @@ html:not([dir=rtl]) .navbar-nav {
 
 .card-body {
     flex: 1 1 auto;
-    padding: 1rem 1rem;
+    padding: 0.5rem 1rem 0rem 2rem;
     color: var(--cui-card-color, unset);
 }
 
@@ -14215,6 +14215,12 @@ html:not([dir=rtl]) .wrapper {
     color: #000015;
 }
 
+
+.action-icon{
+    border-radius: 0px;
+    width: 20px;
+    height: 20px;
+}
 
 
 

@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title', 'Role Management')
-
 @section('content')
     <div class="container">
         <div class="card">
@@ -9,17 +7,17 @@
             <h1>Roles Management</h1>
             <p class="text-medium-emphasis">Manage Roles</p>
         </div>
-            <div class="card-body px-4">
+            <div class="card-body py-3">
                 @can('Roles create')
                 <div class="row">
-                    <div class="col-md-12 mb-4 ml-4">
+                    <div class="col-md-12 mb-2 ml-4">
                         <a href="{{route('role.create')}}" class="btn btn-primary btn-md"> Add Role</a>
                     </div>
                 </div>
                 @endcan
                 @can('Roles access')
                 @can('Users access')
-                <table class="table table-striped table-hover">
+                <table class="table table-striped">
                     <tr>
                         <th>Name</th>
                         <th>Permissions Access</th>

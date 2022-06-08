@@ -5,11 +5,11 @@
 @section('content')
     <div class="container">
         <div class="card" >
-            <div class="card-header">
+            <div class="card-header py-3">
                 <h2>{{ __('Clients') }}</h2>
             </div>
-            <div class="card-body">
-                @can('Permissions create')
+            <div class="card-body py-3">
+                @can('OAuth create')
                 <form action="/oauth/clients" method="post">
                     @csrf
                     <div class="row mb-2">
@@ -25,8 +25,8 @@
                     </div>
                 </form>
                 @endcan
-                    @can('Permissions access')
-                <table class="table table-striped">
+                    @can('OAuth access')
+                <table class="table table-responsive ">
                     <thead>
                     <tr>
                         <th scope="col">Client Name</th>
@@ -48,17 +48,17 @@
                                 <form action="{{route ('client.destroy', $c->id)  }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" data-id="{{$c->id}}" class="btn btn-primary" data-coreui-toggle="modal" data-coreui-target="#staticBackdrop">
+                                    <button type="button" data-id="{{$c->id}}" class="btn btn-primary" data-coreui-toggle="modal" data-coreui-target="#staticBackdrop-{{ $c->id }}">
                                         View
                                     </button>
-                                    @can('Permissions delete')
+                                    @can('OAuth delete')
                                     <button class="btn btn-danger" value="submit">
                                         Delete
                                     </button>
                                     @endcan
                                 </form>
                                 <!-- Modal -->
-                                <div class="modal fade" id="staticBackdrop" data-coreui-backdrop="static" data-coreui-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal fade" id="staticBackdrop-{{ $c->id }}" data-coreui-backdrop="static" data-coreui-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -74,7 +74,6 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    @foreach($clients as $c)
                                                         <tr>
                                                             <td>
                                                                 <input class="copy1" type="text" id="copy_{{ $c->id }}" value="{{ $c->id }}" >
@@ -87,7 +86,6 @@
                                                                 <button class="btn btn-outline-primary" value="copy" onclick="copyToClipboard('copy_{{ $c->secret }}')">Copy secret</button>
                                                             </td>
                                                         </tr>
-                                                    @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

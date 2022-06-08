@@ -8,7 +8,7 @@
             <h1>User Management</h1>
             <p class="text-medium-emphasis">Add User</p>
         </div>    
-            <div class="card-body px-4">
+            <div class="card-body py-3">
                 <form action="{{route('user.store')}}" method="POST" class="row g-3">
                   @csrf
                   <div class="col-md-12">

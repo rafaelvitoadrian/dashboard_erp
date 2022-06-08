@@ -9,7 +9,7 @@
             <h1>Users Management</h1>
             <p class="text-medium-emphasis">Manage Users</p>
         </div>
-            <div class="card-body px-4">
+            <div class="card-body py-3">
                 @can('Users create')
                 <div class="row">
                     <div class="col-md-12 mb-2 ml-4">
@@ -47,7 +47,11 @@
                                 <td>
                                     <form action="{{route ('user.destroy', $u->id)  }}" method="POST">
                                             @can('Users edit')
-                                            <a href="{{ route ('user.edit', $u->id) }}" class="btn btn-primary mr-1">Edit</a>
+                                            <a href="{{ route ('user.edit', $u->id) }}" class="btn btn-primary mr-1">
+                                                <svg class="action-icon">
+                                                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-pencil') }}"></use>
+                                                </svg>
+                                            </a>
                                             @endcan
                                             @csrf
                                             @method('DELETE')

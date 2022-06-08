@@ -9,21 +9,20 @@
             <h1>Permissions Management</h1>
             <p class="text-medium-emphasis">Manage Permissions</p>
         </div>
-            <div class="card-body px-4">
-                <div class="row mb-3">
+            <div class="card-body py-3">
+                <div class="row">
                     @can('Permissions create')
-                    <div class="col-md-3">
+                    <div class="col-md-3 mb-2">
                             <a href="{{route('permission.create')}}" class="btn btn-primary"> Tambah</a>
                         </div>
                     </div>
                 @endcan
                 @can('Permissions access')
-                <table class="table table-striped table-hover">
+                <table class="table table-striped">
                     <tr>
                         <th>Nama</th>
                         <th>Aksi</th>
                     </tr>
-
                     @foreach($permissions as $p)
                         <tr>
                             <td>{{ $p->name }}</td>
