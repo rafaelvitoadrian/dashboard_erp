@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-//Route::get('/client', function () {
-//    return view('client');
-//});
+Route::get('/setting', function () {
+   return view('dashboard.setting');
+});
 
 //Route::get('/dashboard/client', function (Request $request) {
 //    return view('client',[
@@ -36,6 +36,7 @@ Route::resource('client',\App\Http\Controllers\Admin\OAuthController::class);
 
 Route::get('auth/google',[\App\Http\Controllers\OAuth\GoogleController::class,'redirectToGoogle'])->name('google.login');
 Route::get('auth/google/callback',[\App\Http\Controllers\OAuth\GoogleController::class,'handleGoogleCallback'])->name('google.callback');
+
 
 Auth::routes();
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
@@ -22,10 +23,21 @@ class PermissionController extends Controller
         $this->middleware('role_or_permission:Permissions delete', ['only' => ['destroy']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $permission= Permission::latest()->get();
-        return view('admin.permission.index',['permissions'=>$permission]);
+        $cari = $request->query('cari');
+
+        if(!empty($cari)){
+            $permission = DB::table('permissions')
+                ->where('name','like',"%".$cari."%")
+                ->paginate(5);
+        }else{
+            $permission = Permission::paginate(5);
+        }
+        return view('admin.permission.index')->with([
+            'permissions' => $permission,
+            'cari' => $cari,
+        ]);
     }
 
     /**

@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '70f354883823dff174288924e4fc54f33e2e080d',
+        'reference' => 'ac355825257d0b4bbd4a4fa8d1fde9812a89f26c',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -403,6 +403,15 @@
                 0 => '*',
             ),
         ),
+        'kyslik/column-sortable' => array(
+            'pretty_version' => '6.4.2',
+            'version' => '6.4.2.0',
+            'type' => 'package',
+            'install_path' => __DIR__ . '/../kyslik/column-sortable',
+            'aliases' => array(),
+            'reference' => '91792a166dd02aaaeb7928417bb49d808b0c58ea',
+            'dev_requirement' => false,
+        ),
         'laravel/framework' => array(
             'pretty_version' => 'v8.83.9',
             'version' => '8.83.9.0',
@@ -418,7 +427,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '70f354883823dff174288924e4fc54f33e2e080d',
+            'reference' => 'ac355825257d0b4bbd4a4fa8d1fde9812a89f26c',
             'dev_requirement' => false,
         ),
         'laravel/passport' => array(

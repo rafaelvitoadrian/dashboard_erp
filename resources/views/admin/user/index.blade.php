@@ -1,68 +1,93 @@
-@extends('layouts.app')
+@extends('layouts.manage')
 
 @section('title', 'User Management')
-
-@section('content')
-    <div class="container">
-        <div class="card">
-        <div class="card-header py-3">
-            <h1>Users Management</h1>
-            <p class="text-medium-emphasis">Manage Users</p>
-        </div>
-            <div class="card-body py-3">
-                @can('Users create')
-                <div class="row">
-                    <div class="col-md-12 mb-2 ml-4">
-                        <a href="{{route('user.create')}}" class="btn btn-primary btn-md"> Add User</a>
+@section('name-manage', 'Users')
+@section('breadcumb')
+  <div class="container-fluid">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-0 ms-2 pt-2">
+              <h3>User Management</h3>
+            </ol>
+            <ol class="breadcrumb my-0 ms-2 mb-2">
+              <p class="text-medium-emphasis">Manage Users</p>
+            </ol>
+            <ol class="breadcrumb my-0 ms-2 mb-2">
+              <form method="GET" class="row row-cols-lg-auto g-3 align-items-center">
+                <div class="col-12">
+                    <div class="input-group">
+                    <input type="text" class="form-control" name="cari" id="cari" autofocus="true" placeholder="Search Users" value="{{ $cari }}">
                     </div>
                 </div>
-                @endcan
-                @can('Users access')
-                <table class="table table-striped table-hover">
-                    <tr>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Status</th>
-                        <th>Aksi</th>
-                    </tr>
-                        @foreach($user as $u)
-                            <tr>
-                                <td>{{ $u->name }}</td>
-                                <td>{{ $u->email }}</td>
-                                <td>
-                                    @foreach($u->roles as $role)
-                                        <span> {{$role->name}}</span>
-                                    @endforeach
-                                </td>
-                                <td>
-                                    @if($u->status=='pending')
-                                    <button class="btn btn-outline-warning">{{$u->status}}</button>
-                                    @elseif($u->status=='active')
-                                    <button class="btn btn-outline-success">{{$u->status}}</button>
-                                    @else
-                                    <button class="btn btn-outline-danger">{{$u->status}}</button>
-                                    @endif
-                                </td>
-                                <td>
-                                    <form action="{{route ('user.destroy', $u->id)  }}" method="POST">
-                                            @can('Users edit')
-                                            <a href="{{ route ('user.edit', $u->id) }}" class="btn btn-primary mr-1">
-                                                <svg class="action-icon">
-                                                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-pencil') }}"></use>
-                                                </svg>
-                                            </a>
-                                            @endcan
-                                            @csrf
-                                            @method('DELETE')
-                                            @can('Users delete')
-                                            <Button type="submit" class="btn btn-danger">Delete</Button>
-                                            @endcan
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                </table>
-                @endcan
-            </div>
+                <div class="col-12">
+                    <a href="{{route('user.create')}}" class="btn btn-primary btn-md"> Add Users</a>
+                </div>
+              </form>
+            </ol>
+          </nav>
+        </div>
+@endsection
+
+@section('content')
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table class="table table-striped mb-0">
+              <thead class="fw-semibold">
+                <tr class="align-middle">
+                  <th class="text-center">
+                    <svg class="icon">
+                      <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-people"></use>
+                    </svg>
+                  </th>
+                  <th>Name User</th>
+                  <th class="text-center">Role</th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+              @foreach($user as $u)
+              <tbody>
+                <tr class="align-middle">
+                  <td class="text-center">
+                    <div class="avatar avatar-md"><img class="avatar-img" src="assets/img/avatars/1.jpg" alt="user@email.com">
+                        @if($u->status=='pending')
+                            <span class="avatar-status bg-warning"></span>
+                        @elseif($u->status=='active')
+                            <span class="avatar-status bg-success"></span>
+                        @else
+                            <span class="avatar-status bg-danger"></span>
+                        @endif
+                    </div>
+                  </td>
+                  <td>
+                    <div>{{ $u->name }}</div>
+                     <div class="small text-medium-emphasis">{{ $u->email }}</div>
+                  </td>
+                  <td class="text-center">
+                    @foreach($u->roles as $role)
+                        <div> {{$role->name}}</div>
+                    @endforeach
+                  </td>
+                  <td class="text-center">
+                    <form action="{{route ('user.destroy', $u->id)  }}" method="POST">
+                        @can('Users edit')
+                        <a href="{{ route ('user.edit', $u->id) }}" class="btn btn-primary mr-1">
+                            <svg class="action-icon">
+                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-pencil') }}"></use>
+                            </svg>
+                        </a>
+                        @endcan
+                        @csrf
+                        @method('DELETE')
+                        @can('Users delete')
+                        <Button type="submit" class="btn btn-danger">Delete</Button>
+                        @endcan
+                    </form>
+                  </td>
+                </tr>
+              </tbody>
+              @endforeach
+            </table>
+          </div>
+        {{-- {{ $user->links() }} --}}
+        {!! $user->appends(Request::except('page'))->render() !!}
+    </div>
 @endsection

@@ -23,10 +23,20 @@ class RoleController extends Controller
         $this->middleware('role_or_permission:Roles delete', ['only' => ['destroy']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $role= Role::get();
-        return view('admin.role.index',['roles'=>$role]);
+        $cari = $request->query('cari');
+
+        if(!empty($cari)){
+            $role = Role::where('name','like','&'.$cari.'&')
+                ->paginate(5);
+        }else{
+            $role = Role::paginate(5);
+        }
+        return view('admin.role.index')->with([
+            'roles' => $role,
+            'cari' => $cari,
+        ]);
     }
 
     /**

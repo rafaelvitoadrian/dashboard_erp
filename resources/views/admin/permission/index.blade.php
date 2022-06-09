@@ -1,50 +1,65 @@
-@extends('layouts.app')
+@extends('layouts.manage')
 
 @section('title', 'Permissions Management')
-
-@section('content')
-    <div class="container">
-        <div class="card mb-5">
-        <div class="card-header py-3">
-            <h1>Permissions Management</h1>
-            <p class="text-medium-emphasis">Manage Permissions</p>
-        </div>
-            <div class="card-body py-3">
-                <div class="row">
-                    @can('Permissions create')
-                    <div class="col-md-3 mb-2">
-                            <a href="{{route('permission.create')}}" class="btn btn-primary"> Tambah</a>
+@section('name-manage', 'Permissions')
+@section('breadcumb')
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-0 ms-2 pt-2">
+                <h3>Roles Management</h3>
+            </ol>
+            <ol class="breadcrumb my-0 ms-2 mb-2">
+                <p class="text-medium-emphasis">Manage Roles</p>
+            </ol>
+            <ol class="breadcrumb my-0 ms-2 mb-2">
+                <form method="GET" class="row row-cols-lg-auto g-3 align-items-center">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="cari" placeholder="Search Roles" value="{{ $cari }}">
                         </div>
                     </div>
-                @endcan
-                @can('Permissions access')
-                <table class="table table-striped">
-                    <tr>
-                        <th>Nama</th>
-                        <th>Aksi</th>
-                    </tr>
-                    @foreach($permissions as $p)
-                        <tr>
-                            <td>{{ $p->name }}</td>
-                            <td>
-                                <ul class="nav">
-                                    <form action="{{route ('permission.destroy', $p->id)  }}" method="POST">
-                                        @can('Permissions edit')
-                                        <a href="{{ route ('permission.edit', $p->id) }}" class="btn btn-primary mr-2">Edit</a>
-                                        @endcan
-                                            @csrf
-                                        @method('DELETE')
-                                        @can('Permissions delete')
-                                        <Button class="btn btn-danger">Delete</Button>
-                                        @endcan
-                                    </form>
-                                </ul>
-                            </td>
-                        </tr>
-                    @endforeach
-                </table>
-                @endcan
-            </div>
-        </div>
+                    <div class="col-12">
+                        <a href="{{route('role.create')}}" class="btn btn-primary btn-md"> Add Roles</a>
+                    </div>
+                </form>
+            </ol>
+        </nav>
+    </div>
+@endsection
+
+@section('content')
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table class="table table-striped mb-0">
+              <thead class="fw-semibold">
+                <tr class="align-middle">
+                  <th>Permission Name   </th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+              @foreach($permissions as $r)
+              <tbody>
+                <tr>
+                  <td class="">
+                    <div>{{ $r->name }}</div>
+                  </td>
+                  <td class="text-center">
+                    <form action="{{route ('permission.destroy', $r->id)  }}" method="POST">
+                        @can('Permissions edit')
+                        <a href="{{ route ('permission.edit', $r->id) }}" class="btn btn-primary mr-2">Edit</a>
+                        @endcan
+                            @csrf
+                        @method('DELETE')
+                        @can('Permissions delete')
+                        <Button class="btn btn-danger">Delete</Button>
+                        @endcan
+                    </form>
+                  </td>
+                </tr>
+              </tbody>
+              @endforeach
+            </table>
+          </div>
+        {{ $permissions->links() }}
     </div>
 @endsection

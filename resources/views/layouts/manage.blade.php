@@ -62,7 +62,7 @@
     <link href="{{ asset('vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
   </head>
   <body>
-    <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar"> 
+    <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
       <div class="sidebar-brand d-none d-md-flex">
         <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
           <use xlink:href="/assets/brand/coreui.svg#full"></use>
@@ -233,7 +233,7 @@
           <ul class="header-nav ms-3">
             <li class="nav-item dropdown"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('assets/img/avatars/3.jpg') }}" alt="user@email.com"></div>
-              
+
               <div class="dropdown-menu dropdown-menu-end pt-2">
                 <div class="dropdown-header bg-light ">
                   <div class="fw-semibold">Settings</div>
@@ -259,19 +259,10 @@
           </ul>
         </div>
         <div class="header-divider"></div>
-        <div class="container-fluid">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb my-0 ms-2">
-              <li class="breadcrumb-item">
-                <!-- if breadcrumb is single--><span>Home</span>
-              </li>
-              <li class="breadcrumb-item active"><span>Dashboard</span></li>
-            </ol>
-          </nav>
-        </div>
+        @yield('breadcumb')
       </header>
       <div class="body flex-grow-1 px-3">
-      <main >
+      <main>
           @yield('content')
       </main>
       </div>

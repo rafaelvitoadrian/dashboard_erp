@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
+
 class UserController extends Controller
 {
     /**
@@ -25,10 +26,20 @@ class UserController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $datauser = User::all();
-        return view('admin.user.index',['user' => $datauser]);
+        $cari = $request->query('cari');
+
+        if(!empty($cari)){
+            $datauser = User::where('name','like','&'.$cari.'&')
+                ->paginate(5);
+        }else{
+            $datauser = User::paginate(5);
+        }
+        return view('admin.user.index')->with([
+            'user' => $datauser,
+            'cari' => $cari,
+        ]);
     }
 
     /**
