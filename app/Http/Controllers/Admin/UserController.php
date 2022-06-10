@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 
 
@@ -73,20 +75,22 @@ class UserController extends Controller
             $validatedData['image'] = $request->file('image')->store('profile/image');
         }
 
+        $validatedData['password']= Hash::make($validatedData['password']);
+
         $user = User::create($validatedData);
 
-
-//        $user = User::create([
-//            'name' => $request->name,
-//            'email' => $request->email,
-//            'password' => Hash::make($request->password)
-//        ]);
-//
         $user->syncRoles($request->roles);
+
+        $user_data= User::where('email',$user['email'])->first();
+        $profile=Profile::create([
+            'user_id'=>$user_data->id,
+            'profile_name'=>$user['name'],
+        ]);
+
+        $request->session()->flash('success','Registration User successfull!!');
 
         return redirect()->route('user.index');
 
-//        return $request->file('image')->store('profile-image');
     }
 
     /**
@@ -124,15 +128,31 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $validatedData = $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'image'=>'image|file',
+            'roles' => 'required',
+            'status'=>'required'
+        ]);
+
+        if($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('profile/image');
+        }
+
         $user = User::find($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
+        $user->update($validatedData);
+
         $user->status = $request->status;
         $user->save();
 
         $user->syncRoles($request->roles);
 
-        return redirect()-> route('user.index');
+        return redirect()-> route('user.index')->with('success','User has been updated!');
     }
 
     /**
@@ -143,6 +163,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        if($user->image){
+            Storage::delete($user->image);
+        }
         $user->delete();
         return redirect()->back()->withSuccess('User Deleted');
     }

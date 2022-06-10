@@ -88,13 +88,13 @@
                         <svg class="icon">
                           <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
                         </svg></span>
-                      <input class="form-control" type="text" name="email" placeholder="Email" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  required>
+                      <input class="form-control" type="text" name="email" placeholder="Email" @error('email') is-invalid @enderror value="{{ old('email') }}"  required>
                     </div>
                     <div class="input-group mb-4"><span class="input-group-text">
                         <svg class="icon">
                           <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
                         </svg></span>
-                      <input class="form-control" type="password" name="password" placeholder="Password" @error('password') is-invalid @enderror" required>
+                      <input class="form-control" type="password" name="password" placeholder="Password" @error('password') is-invalid @enderror required>
                     </div>
                     <div class="row">
                       <div class="col-6">

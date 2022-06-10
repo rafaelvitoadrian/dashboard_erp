@@ -7,9 +7,9 @@
           <div class="card-header py-3">
             <h1>User Management</h1>
             <p class="text-medium-emphasis">Update User</p>
-        </div>    
+        </div>
             <div class="card-body py-3">
-                <form action="{{route('user.update', $user->id)}}" method="POST" class="row g-3">
+                <form action="{{route('user.update', $user->id)}}" method="POST" class="row g-3" enctype="multipart/form-data">
                   @csrf
                   @method('PUT')
                   <div class="col-md-12">
@@ -36,6 +36,22 @@
                         @endforeach
                     </select>
                   </div>
+                    <div class="col-md-6">
+                        <label for="image" class="form-label"><Strong>Profile</Strong></label>
+                        <input type="hidden" name="oldImage" value="{{$user->image}}">
+                        @if($user->image)
+                            <img class="img-preview img-fluid mb-3 col-sm-5 d-flex " src="{{ asset('storage/'.$user->image) }}">
+                        @else
+                            <img class="img-preview img-fluid mb-3 col-sm-5 ">
+                        @endif
+
+                        <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" value="{{old('image')}}" id="image" onchange="previewImage()">
+                        @error('image')
+                        <div class="valid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
                   <div class="col-12">
                     <button type="submit" class="btn btn-primary mr-2">Update</button>
                     <a href="{{route('user.index')}}" class="btn btn-danger">Cancel</a>
@@ -44,5 +60,21 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function previewImage(){
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFreader = new FileReader();
+            oFreader.readAsDataURL(image.files[0]);
+
+            oFreader.onload = function (oFREvent){
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+    </script>
 
 @endsection
