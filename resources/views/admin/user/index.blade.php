@@ -64,7 +64,7 @@
                               @endif
                           </div>
                       @else
-                          <div class="avatar avatar-md"><img class="avatar-img" src="assets/img/avatars/1.jpg" alt="user@email.com">
+                          <div class="avatar avatar-md"><img class="avatar-img" src="{{asset('assets/img/avatars/11.svg')}}" alt="user@email.com">
                               @if($u->status=='pending')
                                   <span class="avatar-status bg-warning"></span>
                               @elseif($u->status=='active')

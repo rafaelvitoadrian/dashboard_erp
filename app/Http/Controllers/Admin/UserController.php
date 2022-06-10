@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
@@ -33,8 +34,9 @@ class UserController extends Controller
         $cari = $request->query('cari');
 
         if(!empty($cari)){
-            $datauser = User::where('name','like','&'.$cari.'&')
+            $datauser = User::where('name','like',"%".$cari."%")
                 ->paginate(5);
+//            dd($datauser);
         }else{
             $datauser = User::paginate(5);
         }

@@ -51,7 +51,7 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->hashOne(Role::class);
     }
 
     public $sortable = [

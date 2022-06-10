@@ -73,7 +73,15 @@
       </div>
       <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
         <li class="nav-item"><a class="nav-link" href="#">
-            <img class="nav-icon-avatar" src="{{ asset('/storage/'. \Illuminate\Support\Facades\Auth::user()->image) }}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
+                @if(!\Illuminate\Support\Facades\Auth::user()->image)
+                    @if(\Illuminate\Support\Facades\Auth::user()->gender=="male")
+                        <img class="nav-icon-avatar" src="{{asset('assets/img/avatars/11.svg')}}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
+          @else
+              <img class="nav-icon-avatar" src="{{asset('assets/img/avatars/10.svg')}}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
+          @endif
+          @else
+              <img class="nav-icon-avatar" src="{{ asset('storage/'. \Illuminate\Support\Facades\Auth::user()->image) }}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
+          @endif
         <li class="nav-item"><a class="nav-link" href="/">
             <svg class="nav-icon">
               <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
@@ -232,8 +240,17 @@
           </ul>
           <ul class="header-nav ms-3">
             <li class="nav-item dropdown"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('/storage/'. \Illuminate\Support\Facades\Auth::user()->image) }}" alt="user@email.com"></div>
-              <div class="dropdown-menu dropdown-menu-end pt-2">
+                    @if(!\Illuminate\Support\Facades\Auth::user()->image)
+                        @if(\Illuminate\Support\Facades\Auth::user()->gender=="male")
+                            <div class="avatar avatar-md"><img class="avatar-img" src="{{asset('assets/img/avatars/11.svg')}}" alt="user@email.com"></div>
+                        @else
+                            <div class="avatar avatar-md"><img class="avatar-img" src="{{asset('assets/img/avatars/10.svg')}}" alt="user@email.com"></div>
+                        @endif
+                    @else
+                        <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('/storage/'. \Illuminate\Support\Facades\Auth::user()->image) }}" alt="user@email.com"></div>
+                    @endif
+
+                    <div class="dropdown-menu dropdown-menu-end pt-2">
                 <div class="dropdown-header bg-light ">
                   <div class="fw-semibold">Settings</div>
                 </div><a class="dropdown-item" href="#">

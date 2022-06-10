@@ -28,8 +28,7 @@ class PermissionController extends Controller
         $cari = $request->query('cari');
 
         if(!empty($cari)){
-            $permission = DB::table('permissions')
-                ->where('name','like',"%".$cari."%")
+            $permission = Permission::where('name','like',"%".$cari."%")
                 ->paginate(5);
         }else{
             $permission = Permission::paginate(5);

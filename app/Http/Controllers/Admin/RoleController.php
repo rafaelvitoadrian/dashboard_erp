@@ -28,7 +28,7 @@ class RoleController extends Controller
         $cari = $request->query('cari');
 
         if(!empty($cari)){
-            $role = Role::where('name','like','&'.$cari.'&')
+            $role = Role::where('name','like',"%".$cari."%")
                 ->paginate(5);
         }else{
             $role = Role::paginate(5);
