@@ -64,30 +64,37 @@
                                                  <div class="modal-header">
                                                      <h5 class="modal-title" id="staticBackdropLabel">Client Detail</h5>
                                                  </div>
-                                                 <div class="modal-body ">
-                                                     <table class="table table-striped">
-                                                         <thead>
-                                                         <tr>
-                                                             <th scope="col">Client ID</th>
-                                                             <th scope="col">Client Secret</th>
-                                                             <th scope="col">Action</th>
-                                                         </tr>
-                                                         </thead>
-                                                         <tbody>
-                                                         <tr>
-                                                             <td>
-                                                                 <input class="copy1" type="text" id="copy_{{ $c->id }}" value="{{ $c->id }}" >
-                                                             </td>
-                                                             <td>
-                                                                 <input class="copy1" type="text" id="copy_{{ $c->secret }}" value="{{ $c->secret }}">
-                                                             </td>
-                                                             <td>
-                                                                 <button class="btn btn-outline-primary" value="copy" onclick="copyToClipboard('copy_{{ $c->id }}')">Copy Id</button>
-                                                                 <button class="btn btn-outline-primary" value="copy" onclick="copyToClipboard('copy_{{ $c->secret }}')">Copy secret</button>
-                                                             </td>
-                                                         </tr>
-                                                         </tbody>
-                                                     </table>
+                                                 <div class="modal-body">
+                                                    <div class="row mb-2">
+                                                        <div class="col-md-8">
+                                                            <div class="form-floating">
+                                                               <input type="text" class="form-control" type="text" id="copy_{{ $c->id }}" id="ClientId" value="{{ $c->id }}">
+                                                                <label for="ClientId">Client Id</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 mt-2">
+                                                            <button class="btn btn-outline-primary mt-md-1" value="copy" onclick="copyToClipboard('copy_{{ $c->id }}')">Copy Id</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-md-8">
+                                                            <div class="form-floating">
+                                                               <input class="form-control"type="text" id="copy_{{ $c->secret }}" value="{{ $c->secret }}" id="ClientSecret">
+                                                                <label for="ClientSecret">Client Secret</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 mt-md-2">
+                                                            <button class="btn btn-outline-primary" value="copy" onclick="copyToClipboard('copy_{{ $c->secret }}')">Copy secret</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-md-8">
+                                                            <div class="form-floating">
+                                                               <input class="form-control"type="text" id="copy_{{ $c->secret }}" value="{{ $c->redirect }}" id="ClientSecret">
+                                                                <label for="ClientSecret">Client Redirect</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                  </div>
                                                  <div class="modal-footer">
                                                      <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Email\EmailController;
+use App\Http\Controllers\Profile\ProfileControllerr;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,6 +38,8 @@ Route::resource('client',\App\Http\Controllers\Admin\OAuthController::class);
 Route::get('auth/google',[\App\Http\Controllers\OAuth\GoogleController::class,'redirectToGoogle'])->name('google.login');
 Route::get('auth/google/callback',[\App\Http\Controllers\OAuth\GoogleController::class,'handleGoogleCallback'])->name('google.callback');
 
+Route::get('profile',[\App\Http\Controllers\Profile\ProfileControllerr::class,'index'])->name('profile');
+Route::post('profile',[\App\Http\Controllers\Profile\ProfileControllerr::class,'update'])->name('profile.update');
 
 Auth::routes();
 

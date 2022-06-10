@@ -27,6 +27,7 @@ class User extends Authenticatable
         'email',
         'password',
         'google_id',
+        'image'
     ];
     /**
      * The attributes that should be hidden for serialization.
@@ -56,6 +57,11 @@ class User extends Authenticatable
     public $sortable = [
         'name'
     ];
+
+    public function sentTo()
+    {
+        return $this->belongsTo(Profile::class,'user_id');
+    }
 
 //    public $sortable=[
 //          'name','email'

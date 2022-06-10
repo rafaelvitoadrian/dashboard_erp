@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -70,6 +71,12 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'api_token' => Str::random(60),
+        ]);
+
+        $user_data= User::where('email',$data['email'])->first();
+        $profile=Profile::create([
+            'user_id'=>$user_data->id,
+            'profile_name'=>$data['name'],
         ]);
 
         $role_user =  $newUser->assignRole('guest');

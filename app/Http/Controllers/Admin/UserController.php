@@ -57,19 +57,36 @@ class UserController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return false|\Illuminate\Http\RedirectResponse|string
      */
     public function store(Request $request)
     {
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
+
+        $validatedData = $request->validate([
+           'name'=>'required',
+           'email'=>'required|unique:users',
+           'password'=>'required|string|min:8',
+           'image'=>'image|file',
         ]);
 
+        if($request->file('image')){
+            $validatedData['image'] = $request->file('image')->store('profile/image');
+        }
+
+        $user = User::create($validatedData);
+
+
+//        $user = User::create([
+//            'name' => $request->name,
+//            'email' => $request->email,
+//            'password' => Hash::make($request->password)
+//        ]);
+//
         $user->syncRoles($request->roles);
 
         return redirect()->route('user.index');
+
+//        return $request->file('image')->store('profile-image');
     }
 
     /**

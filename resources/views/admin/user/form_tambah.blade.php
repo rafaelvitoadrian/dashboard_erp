@@ -7,9 +7,9 @@
           <div class="card-header py-3">
             <h1>User Management</h1>
             <p class="text-medium-emphasis">Add User</p>
-        </div>    
+        </div>
             <div class="card-body py-3">
-                <form action="{{route('user.store')}}" method="POST" class="row g-3">
+                <form action="{{route('user.store')}}" method="POST" class="row g-3" enctype="multipart/form-data">
                   @csrf
                   <div class="col-md-12">
                     <label for="inputEmail4" class="form-label"><strong>Name</strong></label>
@@ -22,7 +22,7 @@
                   <div class="col-md-6">
                     <label for="inputCity" class="form-label"><strong>Passowrd</strong></label>
                     <input type="password" class="form-control" id="inputCity" name="password" placeholder="Password" required>
-                  </div>  
+                  </div>
                   <div class="col-md-6 mb-1">
                     <label for="inputState" class="form-label"><Strong>Role</Strong></label>
                     <select id="inputState" name="roles[]" class="form-select">
@@ -32,7 +32,11 @@
                       @endforeach
                     </select>
                   </div>
-                  <div class="col-12">
+                    <div class="col-md-6">
+                        <label for="image" class="form-label"><Strong>Profile</Strong></label>
+                        <input class="form-control" type="file" name="image" id="image">
+                    </div>
+                    <div class="col-12">
                     <button type="submit" class="btn btn-primary mr-2">Add</button>
                     <a href="{{route('user.index')}}" class="btn btn-danger">Cancel</a>
                   </div>

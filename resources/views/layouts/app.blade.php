@@ -62,7 +62,7 @@
     <link href="{{ asset('vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
   </head>
   <body>
-    <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar"> 
+    <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
       <div class="sidebar-brand d-none d-md-flex">
         <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
           <use xlink:href="/assets/brand/coreui.svg#full"></use>
@@ -73,7 +73,7 @@
       </div>
       <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
         <li class="nav-item"><a class="nav-link" href="#">
-            <img class="nav-icon-avatar" src="{{ asset('assets/img/avatars/3.jpg') }}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
+            <img class="nav-icon-avatar" src="{{ asset('storage/'. \Illuminate\Support\Facades\Auth::user()->image) }}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
         <li class="nav-item"><a class="nav-link" href="/">
             <svg class="nav-icon">
               <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}"></use>
@@ -232,12 +232,12 @@
           </ul>
           <ul class="header-nav ms-3">
             <li class="nav-item dropdown"><a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('assets/img/avatars/3.jpg') }}" alt="user@email.com"></div>
-              
+                <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('/storage/'. \Illuminate\Support\Facades\Auth::user()->image) }}" alt="user@email.com"></div>
+
               <div class="dropdown-menu dropdown-menu-end pt-2">
                 <div class="dropdown-header bg-light ">
                   <div class="fw-semibold">Settings</div>
-                </div><a class="dropdown-item" href="#">
+                </div><a class="dropdown-item" href="/profile">
                   <svg class="icon me-2">
                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
                   </svg> Profile</a><a class="dropdown-item" href="/setting">

@@ -47,15 +47,27 @@
               <tbody>
                 <tr class="align-middle">
                   <td class="text-center">
-                    <div class="avatar avatar-md"><img class="avatar-img" src="assets/img/avatars/1.jpg" alt="user@email.com">
-                        @if($u->status=='pending')
-                            <span class="avatar-status bg-warning"></span>
-                        @elseif($u->status=='active')
-                            <span class="avatar-status bg-success"></span>
-                        @else
-                            <span class="avatar-status bg-danger"></span>
-                        @endif
-                    </div>
+                      @if($u->image)
+                          <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('storage/'. $u->image) }}" alt="user@email.com">
+                              @if($u->status=='pending')
+                                  <span class="avatar-status bg-warning"></span>
+                              @elseif($u->status=='active')
+                                  <span class="avatar-status bg-success"></span>
+                              @else
+                                  <span class="avatar-status bg-danger"></span>
+                              @endif
+                          </div>
+                      @else
+                          <div class="avatar avatar-md"><img class="avatar-img" src="assets/img/avatars/1.jpg" alt="user@email.com">
+                              @if($u->status=='pending')
+                                  <span class="avatar-status bg-warning"></span>
+                              @elseif($u->status=='active')
+                                  <span class="avatar-status bg-success"></span>
+                              @else
+                                  <span class="avatar-status bg-danger"></span>
+                              @endif
+                          </div>
+                      @endif
                   </td>
                   <td>
                     <div>{{ $u->name }}</div>
