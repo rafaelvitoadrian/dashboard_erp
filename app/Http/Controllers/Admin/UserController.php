@@ -66,6 +66,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
+
         $validatedData = $request->validate([
            'name'=>'required',
            'email'=>'required|unique:users',
@@ -81,13 +82,15 @@ class UserController extends Controller
 
         $user = User::create($validatedData);
 
-        $user->syncRoles($request->roles);
+
 
         $user_data= User::where('email',$user['email'])->first();
         $profile=Profile::create([
             'user_id'=>$user_data->id,
             'profile_name'=>$user['name'],
         ]);
+
+        $user->syncRoles($request->roles);
 
         $request->session()->flash('success','Registration User successfull!!');
 

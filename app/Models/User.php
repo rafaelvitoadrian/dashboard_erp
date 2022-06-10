@@ -51,7 +51,7 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->hashOne(Role::class);
+        return $this->belongsToMany(Role::class);
     }
 
     public $sortable = [
@@ -62,6 +62,18 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Profile::class,'user_id');
     }
+
+    protected $appends = ['permissions'];
+
+    public function getPermissionsAttribute()
+    {
+        return $this->roles->map(function ($role) {
+            return $role->permissions;
+        })->collapse()->pluck('name')->unique();
+
+    }
+
+
 
 //    public $sortable=[
 //          'name','email'

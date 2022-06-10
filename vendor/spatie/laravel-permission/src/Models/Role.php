@@ -197,10 +197,6 @@ class Role extends Model implements RoleContract
     }
 
     protected $hidden = [
-        'pivot',
-        'guard_name',
-        'created_at',
-        'updated_at'
     ];
 
     public function permission()
