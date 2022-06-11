@@ -1,12 +1,5 @@
-
 <!DOCTYPE html>
-<!--
-* CoreUI - Free Bootstrap Admin Template
-* @version v4.1.1
-* @link https://coreui.io
-* Copyright (c) 2022 creativeLabs Łukasz Holeczek
-* Licensed under MIT (https://coreui.io/license)
--->
+
 <html lang="en">
   <head>
     <base href="./">
@@ -16,7 +9,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>ERP | Register </title>
+    <title>ERP | Login</title>
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/favicon/apple-icon-57x57.png') }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('assets/favicon/apple-icon-60x60.png') }}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('assets/favicon/apple-icon-72x72.png') }}">
@@ -26,7 +19,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('assets/favicon/apple-icon-144x144.png') }}">
     <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('assets/favicon/apple-icon-152x152.png') }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/favicon/apple-icon-180x180.png') }}">
-    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/favicon/android-icon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/favicon/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('assets/favicon/favicon-96x96.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/favicon/favicon-16x16.png') }}">
@@ -61,47 +54,96 @@
     <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-6">
-            <div class="card mb-4 mx-4">
-              <div class="card-body p-4">
-
-                <form class="sign-up-form form" action="{{ route('register') }}" method="POST">
+          <div class="col-md-10">
+              <div class="card mb-4 mx-4 " ">
+                <img src="{{ asset('assets\img\bg4.png') }}" style="border-top-left-radius: 13px; border-top-right-radius: 15px;" class="card-img-top"  alt="Backgorund Image">
+                <div class="card-body py-5 px-5">
+                  <form action="{{ route('register') }}" method="POST" class="row sign-up-form form g-3">
                   @csrf
-                  <h1>Register</h1>
-                  <p class="text-medium-emphasis">Create your account</p>
-                  <div class="input-group mb-3"><span class="input-group-text">
-                      <svg class="icon">
-                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
-                      </svg></span>
-                    <input class="form-control" type="text" placeholder="Name" name="name" required>
-                  </div>
-                  <div class="input-group mb-3"><span class="input-group-text">
-                      <svg class="icon">
-                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
-                      </svg></span>
-                    <input class="form-control" type="email" name="email" placeholder="Email" required>
-                  </div>
-                  <div class="input-group mb-3"><span class="input-group-text">
-                      <svg class="icon">
-                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                      </svg></span>
-                    <input class="form-control" type="password" name="password" placeholder="Password" required>
-                  </div>
-                  <div class="input-group mb-4"><span class="input-group-text">
-                      <svg class="icon">
-                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-                      </svg></span>
-                    <input class="form-control" type="password" required name="password_confirmation" placeholder="Repeat password">
-                  </div>
-                  <button class="btn btn-block btn-success" type="submit">Create Account</button>
-                </form>
+                    <div class="col-md-6">
+                      <label for="FirstName" class="form-label"><strong>First Name</strong></label>
+                      <input type="text" class="form-control" value="{{ old('first_name') }}" placeholder="First Name" name="first_name" id="FirstName" required>
+                      @error('first_name')
+                      <div class="valid-feedback">
+                          {{ $message }}
+                      </div>
+                      @enderror
+                    </div>
+                    <div class="col-md-6">
+                      <label for="LastName" class="form-label"><strong>Last Name</strong></label>
+                      <input type="text" class="form-control" value="{{ old('last_name') }}" placeholder="Last Name" name="last_name" id="LastName" required>
+                      @error('last_name')
+                      <div class="valid-feedback">
+                          {{ $message }}
+                      </div>
+                      @enderror
+                    </div>
+                    <div class="col-md-6">
+                      <label for="UserName" class="form-label"><strong>Username</strong></label>
+                      <input type="text" placeholder="Username" value="{{ old('username') }}" name="username" class="form-control" id="UserName" required>
+                      @error('username')
+                      <div class="valid-feedback">
+                          {{ $message }}
+                      </div>
+                      @enderror
+                    </div>
+                    <div class="col-md-6">
+                      <label for="Email" class="form-label"><strong>Email</strong></label>
+                      <input type="email" placeholder="Email" value="{{ old('email') }}" name="email" class="form-control" id="Email" required>
+                      @error('email')
+                      <div class="valid-feedback">
+                          {{ $message }}
+                      </div>
+                      @enderror
+                    </div>
+                    <div class="col-md-6">
+                      <label for="Password" class="form-label"><strong>Password</strong></label>
+                      <input type="password" placeholder="Password" name="password" class="form-control" id="Password" required>
+                      @error('password')
+                      <div class="valid-feedback">
+                          {{ $message }}
+                      </div>
+                      @enderror
+                    </div>
+                    <div class="col-md-6">
+                      <label for="Password_C" class="form-label"><strong>Confirm Password</strong></label>
+                      <input type="password" placeholder="Confirm Passowrd" name="password_confirmation" class="form-control" id="Password_C" required>
+                      @error('email')
+                      <div class="valid-feedback">
+                          {{ $message }}
+                      </div>
+                      @enderror
+                    </div>
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                        <label class="form-check-label" for="gridCheck">
+                          I agree with <a href="#">Privacy and Policy</a>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 d-grid gap-2">
+                      <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-center d-grid gap-2 justify-content-center">
+                      <div class="p-2">
+                          <p class="text-medium-emphasis">Or Sign in with</p>
+                      </div>
+                      <div class="p-2">
+                        <a href="{{ route('google.login') }}" class="btn btn-danger">Google login</a>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <p class="text-center">Already have account? <a href="{{ route('login') }}">Sign in</a></p>
+                    </div>
+                  </form>
+                </div>
               </div>
-            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- CoreUI and necessary plugins-->
+      <!-- CoreUI and necessary plugins-->
     <script src="{{ asset('vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
     <script src="{{ asset('vendors/simplebar/js/simplebar.min.js') }}"></script>
     <script>

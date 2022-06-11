@@ -19,12 +19,12 @@
                     <div class="mb-3">
                         <label for="name" class="form-label"> <strong>Permissions</strong></label>
                         @foreach($permissions as $permission)
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox" name="permissions[]" id="permissions" value="{{$permission->id}}">
-                                                {{ $permission->name }}
-                                            </label>
-                                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="permissions[]" id="permissions" value="{{$permission->id}}">
+                                {{ $permission->name }}
+                            </label>
+                        </div>
                         @endforeach
                     </div>
                     <button class="btn btn-primary" name="submit" type="submit">Add</button>

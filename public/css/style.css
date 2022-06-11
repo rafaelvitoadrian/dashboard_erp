@@ -291,12 +291,11 @@ sup {
 }
 
 a {
-    color: var(--cui-link-color, #321fdb);
-    text-decoration: underline;
+    color: #1EC8C8;
 }
 
 a:hover {
-    color: var(--cui-link-hover-color, #2819af);
+    color: var(--cui-link-hover-color, #1EC8C8);
 }
 
 a:not([href]):not([class]),
@@ -5189,7 +5188,7 @@ html:not([dir=rtl]) .navbar-nav {
     background-color: var(--cui-card-bg, #fff);
     background-clip: border-box;
     border: 1px solid var(--cui-card-border-color, rgba(0, 0, 21, 0.125));
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .card>hr {
