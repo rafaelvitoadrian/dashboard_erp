@@ -83,7 +83,6 @@ class UserController extends Controller
         $user = User::create($validatedData);
 
 
-
         $user_data= User::where('email',$user['email'])->first();
         $profile=Profile::create([
             'user_id'=>$user_data->id,
@@ -139,7 +138,8 @@ class UserController extends Controller
             'email'=>'required',
             'image'=>'image|file',
             'roles' => 'required',
-            'status'=>'required'
+            'status'=>'required',
+            'gender'=>'required'
         ]);
 
         if($request->file('image')){
@@ -166,11 +166,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
+        $user = User::find($id);
         if($user->image){
             Storage::delete($user->image);
         }
+
+        $profile = Profile::where('user_id',$id)->first()->delete();
         $user->delete();
         return redirect()->back()->withSuccess('User Deleted');
     }

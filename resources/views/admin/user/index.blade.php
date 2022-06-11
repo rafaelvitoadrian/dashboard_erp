@@ -45,6 +45,7 @@
                     </svg>
                   </th>
                   <th>Name User</th>
+                  <th>Status</th>
                   <th class="text-center">Role</th>
                   <th class="text-center">Action</th>
                 </tr>
@@ -64,21 +65,52 @@
                               @endif
                           </div>
                       @else
-                          <div class="avatar avatar-md"><img class="avatar-img" src="{{asset('assets/img/avatars/11.svg')}}" alt="user@email.com">
-                              @if($u->status=='pending')
-                                  <span class="avatar-status bg-warning"></span>
-                              @elseif($u->status=='active')
-                                  <span class="avatar-status bg-success"></span>
-                              @else
-                                  <span class="avatar-status bg-danger"></span>
-                              @endif
-                          </div>
+                          @if($u->gender=="male")
+                              <div class="avatar avatar-md"><img class="avatar-img" src="{{asset('assets/img/avatars/11.svg')}}" alt="Profile Picture">
+                                  @if($u->status=='pending')
+                                      <span class="avatar-status bg-warning"></span>
+                                  @elseif($u->status=='active')
+                                      <span class="avatar-status bg-success"></span>
+                                  @else
+                                      <span class="avatar-status bg-danger"></span>
+                                  @endif
+                              </div>
+                          @elseif($u->gender=="female")
+                              <div class="avatar avatar-md"><img class="avatar-img" src="{{asset('assets/img/avatars/10.svg')}}" alt="Profile Picture">
+                                  @if($u->status=='pending')
+                                      <span class="avatar-status bg-warning"></span>
+                                  @elseif($u->status=='active')
+                                      <span class="avatar-status bg-success"></span>
+                                  @else
+                                      <span class="avatar-status bg-danger"></span>
+                                  @endif
+                              </div>
+                          @else
+                              <div class="avatar avatar-md"><img class="avatar-img" src="{{asset('assets/img/avatars/12.svg')}}" alt="Profile Picture">
+                                  @if($u->status=='pending')
+                                      <span class="avatar-status bg-warning"></span>
+                                  @elseif($u->status=='active')
+                                      <span class="avatar-status bg-success"></span>
+                                  @else
+                                      <span class="avatar-status bg-danger"></span>
+                                  @endif
+                              </div>
+                          @endif
                       @endif
                   </td>
                   <td>
                     <div>{{ $u->name }}</div>
                      <div class="small text-medium-emphasis">{{ $u->email }}</div>
                   </td>
+                    <td>
+                        @if($u->status=="active")
+                            <button class="btn btn-outline-success btn-sm" disabled>{{$u->status}}</button>
+                        @elseif($u->status=="pending")
+                            <button class="btn btn-outline-warning btn-sm" disabled>{{$u->status}}</button>
+                        @else
+                            <button class="btn btn-outline-danger btn-sm" disabled>{{$u->status}}</button>
+                        @endif
+                    </td>
                   <td class="text-center">
                     @foreach($u->roles as $role)
                         <div> {{$role->name}}</div>

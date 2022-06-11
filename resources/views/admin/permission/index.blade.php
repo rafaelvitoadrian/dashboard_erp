@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <a href="{{route('role.create')}}" class="btn btn-primary btn-md"> Add Roles</a>
+                        <a href="{{route('permission.create')}}" class="btn btn-primary btn-md"> Add Permissions</a>
                     </div>
                 </form>
             </ol>
@@ -29,6 +29,12 @@
 
 @section('content')
     <div class="container-fluid">
+        @if(session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-coreui-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="table-responsive">
             <table class="table table-striped mb-0">
               <thead class="fw-semibold">

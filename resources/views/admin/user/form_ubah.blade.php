@@ -52,6 +52,14 @@
                         </div>
                         @enderror
                     </div>
+                    <div class="col-md-6 mb-1">
+                        <label for="inputState1" class="form-label"><Strong>Gender</Strong></label>
+                        <select id="inputState1" name="gender" class="form-select">
+                            @foreach(["male" => "Male", "female" => "Female"] AS $genderWay => $statusLabel)
+                                <option value="{{ $genderWay }}" {{ old("contact_way", $user->gender) == $genderWay ? "selected" : "" }}>{{ $statusLabel }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                   <div class="col-12">
                     <button type="submit" class="btn btn-primary mr-2">Update</button>
                     <a href="{{route('user.index')}}" class="btn btn-danger">Cancel</a>

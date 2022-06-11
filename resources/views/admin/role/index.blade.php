@@ -28,6 +28,12 @@
 
 @section('content')
     <div class="container-fluid">
+        @if(session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-coreui-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
         <div class="table-responsive">
             <table class="table table-striped mb-0">
               <thead class="fw-semibold">
@@ -41,7 +47,7 @@
               <tbody>
                 <tr >
                   <td class="text-center">
-                    <div>{{ $r->name }}</div>
+                    <div class="mt-2">{{ $r->name }}</div>
                   </td>
                   <td>
                     @foreach($r->permissions as $p)

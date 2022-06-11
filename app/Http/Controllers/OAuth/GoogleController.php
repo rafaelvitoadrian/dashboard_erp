@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\OAuth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,11 @@ class GoogleController extends Controller
                 ]);
 
                 $newUser->assignRole('guest');
+                $user_data= User::where('email',$newUser['email'])->first();
+                $profile=Profile::create([
+                    'user_id'=>$user_data->id,
+                    'profile_name'=>$user['name'],
+                ]);
 
                 Auth::login($newUser);
                 return redirect()->intended('home');

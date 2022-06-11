@@ -76,9 +76,11 @@
                 @if(!\Illuminate\Support\Facades\Auth::user()->image)
                     @if(\Illuminate\Support\Facades\Auth::user()->gender=="male")
                         <img class="nav-icon-avatar" src="{{asset('assets/img/avatars/11.svg')}}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
-                    @else
+                    @elseif(\Illuminate\Support\Facades\Auth::user()->gender=="female")
                         <img class="nav-icon-avatar" src="{{asset('assets/img/avatars/10.svg')}}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
-                    @endif
+                      @else
+                          <img class="nav-icon-avatar" src="{{asset('assets/img/avatars/12.svg')}}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
+                      @endif
                 @else
                     <img class="nav-icon-avatar" src="{{ asset('storage/'. \Illuminate\Support\Facades\Auth::user()->image) }}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
                 @endif
@@ -243,13 +245,14 @@
               @if(!\Illuminate\Support\Facades\Auth::user()->image)
                  @if(\Illuminate\Support\Facades\Auth::user()->gender=="male")
                     <div class="avatar avatar-md"><img class="avatar-img" src="{{asset('assets/img/avatars/11.svg')}}" alt="user@email.com"></div>
-                 @else
+                 @elseif(\Illuminate\Support\Facades\Auth::user()->gender=="female")
                      <div class="avatar avatar-md"><img class="avatar-img" src="{{asset('assets/img/avatars/10.svg')}}" alt="user@email.com"></div>
+                 @else
+                     <div class="avatar avatar-md"><img class="avatar-img" src="{{asset('assets/img/avatars/12.svg')}}" alt="user@email.com"></div>
                  @endif
               @else
                   <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('/storage/'. \Illuminate\Support\Facades\Auth::user()->image) }}" alt="user@email.com"></div>
               @endif
-
               <div class="dropdown-menu dropdown-menu-end pt-2">
                 <div class="dropdown-header bg-light ">
                   <div class="fw-semibold">Settings
