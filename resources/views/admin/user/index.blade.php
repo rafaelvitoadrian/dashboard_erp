@@ -45,6 +45,7 @@
                     </svg>
                   </th>
                   <th>Name User</th>
+                  <th>Email</th>
                   <th>Status</th>
                   <th class="text-center">Role</th>
                   <th class="text-center">Action</th>
@@ -100,8 +101,9 @@
                   </td>
                   <td>
                     <div>{{ $u->name }}</div>
-                     <div class="small text-medium-emphasis">{{ $u->email }}</div>
+                     <div class="small text-medium-emphasis">{{ $u->username }}</div>
                   </td>
+                  <td>{{ $u->email }}</td>
                     <td>
                         @if($u->status=="active")
                             <button class="btn btn-outline-success btn-sm" disabled>{{$u->status}}</button>

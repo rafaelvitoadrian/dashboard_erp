@@ -88,7 +88,7 @@
                         <svg class="icon">
                           <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
                         </svg></span>
-                      <input class="form-control" type="text" name="email" placeholder="Email" @error('email') is-invalid @enderror value="{{ old('email') }}"  required>
+                      <input class="form-control" type="text" name="username" placeholder="{{ __('username') }}" @error('username') is-invalid @enderror value="{{ old('username') }}"  required>
                     </div>
                     <div class="input-group mb-4"><span class="input-group-text">
                         <svg class="icon">

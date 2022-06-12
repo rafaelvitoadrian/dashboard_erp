@@ -7542,6 +7542,24 @@ html:not([dir=rtl]) .offcanvas-end {
     }
 }
 
+.avatar-profile-settings{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    transition: margin 0.15s;
+    font-size: 0.8rem;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+
+
 .avatar {
     position: relative;
     display: inline-flex;
@@ -8585,7 +8603,7 @@ html:not([dir=rtl]) .sidebar-close {
     text-align: center;
     fill: currentColor;
     transition: inherit;
-    border-radius: 50em;
+    border-radius: 50rem;
     margin-left: -0.25rem;
     margin-right: 1rem;
 }
@@ -14247,6 +14265,11 @@ html:not([dir=rtl]) .wrapper {
     width: 20px;
     height: 20px;
 }
+
+/* .header-toggler-icon-profile {
+    height: 200px;
+    background-image: var(--cui-header-toggler-icon-bg, url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%2844, 56, 74, 0.681%29' stroke-width='2.25' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"));
+} */
 
 
 

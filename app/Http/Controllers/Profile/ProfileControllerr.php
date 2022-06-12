@@ -21,6 +21,11 @@ class ProfileControllerr extends Controller
 
     public function update(Request $request)
     {
+        $user_data = User::find(Auth::id())->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name
+        ]);
+
         $employee = Profile::where('user_id',Auth::id())->update([
             'work_mobile' => $request->work_mobile,
             'work_phone'=>$request->work_phone,
@@ -33,6 +38,6 @@ class ProfileControllerr extends Controller
             'zip'=>$request->zip,
         ]);
         return redirect(route('profile'))
-            ->with(['success' => 'employee <strong>' .$request->name. '</strong> successfully updated!']);
+            ->with(['success' => 'Your profile has been successfully updated!']);
     }
 }
