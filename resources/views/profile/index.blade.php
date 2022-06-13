@@ -63,6 +63,18 @@
                     <label for="LastName" class="form-label">Last Name</label>
                     <input type="text" class="form-control" name="last_name" value="{{ $user->last_name }}" id="LastName">
                 </div>
+                <div class="col-md-6">
+                    <label for="inputUsername" class="form-label">Username</label>
+                    <input type="text" value="{{ $user->username }}" name="username" class="form-control" id="inputUsername">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputGender" class="form-label"><Strong>Gender</Strong></label>
+                      <select id="inputGender" name="gender" class="form-select">
+                          @foreach(["male" => "Male", "female" => "Female"] AS $genderWay => $statusLabel)
+                              <option value="{{ $genderWay }}" {{ old("contact_way", $user->gender) == $genderWay ? "selected" : "" }}>{{ $statusLabel }}</option>
+                          @endforeach
+                      </select>
+                </div>
                 <div class="col-12">
                     <label for="inputAddress" class="form-label">Address</label>
                     <input type="text" name="address" class="form-control" value="{{ $profile->address }}" id="inputAddress" placeholder="1234 Main St">

@@ -25,7 +25,9 @@ class ProfileControllerr extends Controller
         $user_data = User::find(Auth::id())->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
-            'name' => $request->first_name.$request->last_name
+            'name' => $request->first_name.$request->last_name,
+            'username' => $request->username,
+            'gender' => $request->gender,
         ]);
 
 
