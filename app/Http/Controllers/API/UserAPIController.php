@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\API;
 
-use App\Helpers\ApiFormatter;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Helpers\ApiFormatter;
 
-class UserController extends Controller
+class UserAPIController extends Controller
 {
     public function SumActiveUser()
     {
