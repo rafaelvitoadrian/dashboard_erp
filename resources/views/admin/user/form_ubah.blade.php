@@ -36,30 +36,34 @@
                         @endforeach
                     </select>
                   </div>
-                    <div class="col-md-6">
-                        <label for="image" class="form-label"><Strong>Profile</Strong></label>
-                        <input type="hidden" name="oldImage" value="{{$user->image}}">
-                        @if($user->image)
-                            <img class="img-preview img-fluid mb-3 col-sm-5 d-flex " src="{{ asset('storage/'.$user->image) }}">
-                        @else
-                            <img class="img-preview img-fluid mb-3 col-sm-5 ">
-                        @endif
+                  <div class="col-md-6">
+                    <label for="inputUsername" class="form-label"><Strong>Username</Strong></label>
+                    <input type="text" class="form-control" id="inputUsername" value="{{$user->username}}" name="username" placeholder="Username">
+                  </div>
+                  <div class="col-md-6 mb-1">
+                      <label for="inputState1" class="form-label"><Strong>Gender</Strong></label>
+                      <select id="inputState1" name="gender" class="form-select">
+                          @foreach(["male" => "Male", "female" => "Female"] AS $genderWay => $statusLabel)
+                              <option value="{{ $genderWay }}" {{ old("contact_way", $user->gender) == $genderWay ? "selected" : "" }}>{{ $statusLabel }}</option>
+                          @endforeach
+                      </select>
+                  </div>
+                  <div class="col-md-6">
+                      <label for="image" class="form-label"><Strong>Profile</Strong></label>
+                      <input type="hidden" name="oldImage" value="{{$user->image}}">
+                      @if($user->image)
+                          <img class="img-preview img-fluid mb-3 col-sm-5 d-flex " src="{{ asset('storage/'.$user->image) }}">
+                      @else
+                          <img class="img-preview img-fluid mb-3 col-sm-5 ">
+                      @endif
 
-                        <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" value="{{old('image')}}" id="image" onchange="previewImage()">
-                        @error('image')
-                        <div class="valid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-                    <div class="col-md-6 mb-1">
-                        <label for="inputState1" class="form-label"><Strong>Gender</Strong></label>
-                        <select id="inputState1" name="gender" class="form-select">
-                            @foreach(["male" => "Male", "female" => "Female"] AS $genderWay => $statusLabel)
-                                <option value="{{ $genderWay }}" {{ old("contact_way", $user->gender) == $genderWay ? "selected" : "" }}>{{ $statusLabel }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                      <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" value="{{old('image')}}" id="image" onchange="previewImage()">
+                      @error('image')
+                      <div class="valid-feedback">
+                          {{ $message }}
+                      </div>
+                      @enderror
+                  </div>
                   <div class="col-12">
                     <button type="submit" class="btn btn-primary mr-2">Update</button>
                     <a href="{{route('user.index')}}" class="btn btn-danger">Cancel</a>

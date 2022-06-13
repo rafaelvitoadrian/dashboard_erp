@@ -138,7 +138,8 @@ class UserController extends Controller
             'image'=>'image|file',
             'roles' => 'required',
             'status'=>'required',
-            'gender'=>'required'
+            'gender'=>'required',
+            'username'=>'required'
         ]);
 
         if($request->file('image')){
