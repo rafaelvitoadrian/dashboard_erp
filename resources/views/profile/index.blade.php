@@ -13,9 +13,40 @@
     <div class="card">
     <div class="card-header">
         <div class="row">
-            <div class="col-md-12 mb-4  d-flex justify-content-center align-items-center">
-                <img class="avatar-profile-settings" src="{{ asset('storage/'. \Illuminate\Support\Facades\Auth::user()->image) }}" alt="user@email.com"><span class="avatar-status bg-success"></span>
+            <div class="col-md-12 mb-4 d-flex justify-content-center align-items-center">
+                 @if(!\Illuminate\Support\Facades\Auth::user()->image)
+                    @if(\Illuminate\Support\Facades\Auth::user()->gender=="male")
+                        <label for="image">
+                            <img class="avatar-profile-settings" src="{{asset('assets/img/avatars/11.svg')}}"  alt="user@email.com"><span class="avatar-status bg-success"></span>
+                        </label>
+                    @elseif(\Illuminate\Support\Facades\Auth::user()->gender=="female")
+                        <label for="image">
+                            <img class="avatar-profile-settings" src="{{asset('assets/img/avatars/10.svg')}}"  alt="user@email.com"><span class="avatar-status bg-success"></span>
+                        </label>
+                    @else
+                        <label for="image">
+                            <img class="avatar-profile-settings" src="{{asset('assets/img/avatars/12.svg')}}"  alt="user@email.com"><span class="avatar-status bg-success"></span>
+                        </label>
+                    @endif
+                @else
+                    <label for="image">
+                        <img class="avatar-profile-settings" src="{{ asset('storage/'. \Illuminate\Support\Facades\Auth::user()->image) }}" alt="user@email.com"><span class="avatar-status bg-success"></span>
+                    </label>
+                @endif
             </div>
+            <form action="{{ route('profile.image') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="col-md-12 d-flex justify-content-center">
+                    <div class="p-2"><input type="file" class="btn btn-primary" name="image">
+                        <input type="hidden" name="oldImage" value="{{$user->image}}">
+                    </div>
+                </div>
+                <div class="col-md-12 d-flex mb-3 justify-content-center">
+                    <div class="p-2">
+                        <button type="submit" class="btn btn-primary">Update Image</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
         <div class="card-body">
@@ -53,7 +84,7 @@
                     <input type="number" name="zip" class="form-control" value="{{ $profile->zip }}" id="inputZip">
                 </div>
                 <hr>
-                
+
                 {{-- <h4>Work Information</h4> --}}
                 {{-- Work Mobile --}}
                 {{-- <div class="col-md-2">

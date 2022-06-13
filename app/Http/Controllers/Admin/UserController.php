@@ -82,7 +82,6 @@ class UserController extends Controller
 
         $user = User::create($validatedData);
 
-
         $user_data= User::where('email',$user['email'])->first();
         $profile=Profile::create([
             'user_id'=>$user_data->id,

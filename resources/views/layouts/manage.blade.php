@@ -257,7 +257,7 @@
                     <div class="dropdown-menu dropdown-menu-end pt-2">
                 <div class="dropdown-header bg-light ">
                   <div class="fw-semibold">Settings</div>
-                </div><a class="dropdown-item" href="#">
+                </div><a class="dropdown-item" href="{{ route('profile') }}">
                   <svg class="icon me-2">
                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
                   </svg> Profile</a><a class="dropdown-item" href="/setting">

@@ -40,6 +40,7 @@ Route::get('auth/google/callback',[\App\Http\Controllers\OAuth\GoogleController:
 
 Route::get('profile',[\App\Http\Controllers\Profile\ProfileControllerr::class,'index'])->name('profile');
 Route::post('profile',[\App\Http\Controllers\Profile\ProfileControllerr::class,'update'])->name('profile.update');
+Route::post('profile/image',[\App\Http\Controllers\Profile\ProfileControllerr::class,'image'])->name('profile.image');
 
 Auth::routes();
 

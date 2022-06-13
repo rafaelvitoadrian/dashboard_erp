@@ -7,6 +7,7 @@ use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileControllerr extends Controller
 {
@@ -23,8 +24,10 @@ class ProfileControllerr extends Controller
     {
         $user_data = User::find(Auth::id())->update([
             'first_name' => $request->first_name,
-            'last_name' => $request->last_name
+            'last_name' => $request->last_name,
+            'name' => $request->first_name.$request->last_name
         ]);
+
 
         $employee = Profile::where('user_id',Auth::id())->update([
             'work_mobile' => $request->work_mobile,
@@ -40,5 +43,25 @@ class ProfileControllerr extends Controller
         ]);
         return redirect(route('profile'))
             ->with(['success' => 'Your profile has been successfully updated!']);
+    }
+
+    public function image(Request $request)
+    {
+        $validatedData = $request->validate([
+            'image'=>'image|file',
+        ]);
+
+        if($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('profile/image');
+        }
+
+        $user_data = User::find(Auth::id())->update($validatedData);
+
+        return redirect(route('profile'))
+            ->with(['success' => 'Your profile has been successfully updated!']);
+
     }
 }
