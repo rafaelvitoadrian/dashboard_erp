@@ -46,10 +46,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="inputState" class="form-label">State</label>
-                    <select id="inputState" name="state_id" class="form-select" value="{{ $profile->state_id }}">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                    </select>
+                    <input type="text" name="state" class="form-control" value="{{ $profile->state }}" id="inputCity">
                 </div>
                 <div class="col-md-2">
                     <label for="inputZip" class="form-label">Zip</label>
@@ -89,7 +86,7 @@
                 <hr>
                  --}}
 
-                <div class="col-12">
+                <div class="col-12 d-md-flex justify-content-md-end">
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>

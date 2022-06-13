@@ -36,6 +36,7 @@ class ProfileControllerr extends Controller
             'address2'=>$request->address2,
             'city'=>$request->city,
             'zip'=>$request->zip,
+            'state' => $request->state,
         ]);
         return redirect(route('profile'))
             ->with(['success' => 'Your profile has been successfully updated!']);

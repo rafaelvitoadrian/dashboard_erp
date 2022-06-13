@@ -32,6 +32,7 @@ class Profile extends Model
         'mobile_phone',
         'work_email',
         'work_location',
-        'photo'
+        'photo',
+        'state'
     ];
 }
