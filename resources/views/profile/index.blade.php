@@ -68,7 +68,7 @@
                     <input type="text" value="{{ $user->username }}" name="username" class="form-control" id="inputUsername">
                 </div>
                 <div class="col-md-6">
-                    <label for="inputGender" class="form-label"><Strong>Gender</Strong></label>
+                    <label for="inputGender" class="form-label">Gender</label>
                       <select id="inputGender" name="gender" class="form-select">
                           @foreach(["male" => "Male", "female" => "Female"] AS $genderWay => $statusLabel)
                               <option value="{{ $genderWay }}" {{ old("contact_way", $user->gender) == $genderWay ? "selected" : "" }}>{{ $statusLabel }}</option>
