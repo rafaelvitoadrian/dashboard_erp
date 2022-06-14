@@ -93,11 +93,11 @@
                       @csrf
                       <h5 class="mt-5 lgn">Email</h5>
                       <div class="input-group mb-3"><span class="input-group-text">
-                        <input class="form-control" type="text" name="username" placeholder="m*****@gmail.com" @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}"  required>
+                        <input class="form-control" type="text" name="username" placeholder="Email" @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}"  required>
                       </div>
                       <h5 class="lgn">Password</h5>
                       <div class="input-group"><span class="input-group-text">
-                        <input class="form-control" type="password" name="password" placeholder="*******" @error('password') is-invalid @enderror" required>
+                        <input class="form-control" type="password" name="password" placeholder="Password" @error('password') is-invalid @enderror" required>
                       </div>
                       <div class="text-first">
                         <a href="{{ route('password.request') }}" class="fgp btn btn-link px-0">Forgot Password?</a>

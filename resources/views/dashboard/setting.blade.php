@@ -27,7 +27,7 @@
                     </div>
                 </div>
                     @canany('Users access','Users add','Users edit','Users delete')
-                    <h6 class="title mt-2">Users</h6>
+                    <h6 class="title mt-2">Manage</h6>
                     <hr class="line mt-2">
                     <div class="row">
                         <div class="col-sm-4">
