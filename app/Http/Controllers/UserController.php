@@ -23,14 +23,14 @@ class UserController extends Controller
 
             if ($user_image==null){
                 if($user_gender=="male"){
-                    $user_image_fix = 'http://127.0.0.1:8000/assets/img/avatars/11.svg';
+                    $user_image_fix = 'http://rafaelvito.site/assets/img/avatars/11.svg';
                 }elseif($user_gender=="female"){
-                    $user_image_fix = 'http://127.0.0.1:8000/assets/img/avatars/10.svg';
+                    $user_image_fix = 'http://rafaelvito.site/assets/img/avatars/10.svg';
                 }else{
-                    $user_image_fix = 'http://127.0.0.1:8000/assets/img/avatars/12.svg';
+                    $user_image_fix = 'http://rafaelvito.site/assets/img/avatars/12.svg';
                 }
             }else{
-                $user_image_fix = 'http://127.0.0.1:8000/storage/'.$user['image'];
+                $user_image_fix = 'http://rafaelvito.site/storage/'.$user['image'];
             }
 
         $data_user = [
