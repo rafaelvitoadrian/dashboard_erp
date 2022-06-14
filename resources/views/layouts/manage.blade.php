@@ -72,17 +72,17 @@
         </svg>
       </div>
       <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
-        <li class="nav-item"><a class="nav-link" href="#">
+        <li class="nav-item"><a class="nav-link" href="{{ route('profile') }}">
                 @if(!\Illuminate\Support\Facades\Auth::user()->image)
                     @if(\Illuminate\Support\Facades\Auth::user()->gender=="male")
-                        <img class="nav-icon-avatar" src="{{asset('assets/img/avatars/11.svg')}}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
+                        <img class="nav-icon-avatar" src="{{asset('assets/img/avatars/11.svg')}}" alt="user@email.com"> <strong>{{Auth::user()->first_name}}</strong></a></li>
                     @elseif(\Illuminate\Support\Facades\Auth::user()->gender=="female")
-                         <img class="nav-icon-avatar" src="{{asset('assets/img/avatars/10.svg')}}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
+                         <img class="nav-icon-avatar" src="{{asset('assets/img/avatars/10.svg')}}" alt="user@email.com"> <strong>{{Auth::user()->first_name}}</strong></a></li>
                       @else
-                          <img class="nav-icon-avatar" src="{{asset('assets/img/avatars/12.svg')}}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
+                          <img class="nav-icon-avatar" src="{{asset('assets/img/avatars/12.svg')}}" alt="user@email.com"> <strong>{{Auth::user()->first_name}}</strong></a></li>
                       @endif
                     @else
-                       <img class="nav-icon-avatar" src="{{ asset('storage/'. \Illuminate\Support\Facades\Auth::user()->image) }}" alt="user@email.com"> <strong>{{Auth::user()->name}}</strong></a></li>
+                       <img class="nav-icon-avatar" src="{{ asset('storage/'. \Illuminate\Support\Facades\Auth::user()->image) }}" alt="user@email.com"> <strong>{{Auth::user()->first_name}}</strong></a></li>
                     @endif
         <li class="nav-item"><a class="nav-link" href="/">
             <svg class="nav-icon">

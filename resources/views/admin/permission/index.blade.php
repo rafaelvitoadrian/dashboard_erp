@@ -9,13 +9,13 @@
                 <h3>Roles Management</h3>
             </ol>
             <ol class="breadcrumb my-0 ms-2 mb-2">
-                <p class="text-medium-emphasis">Manage Roles</p>
+                <p class="text-medium-emphasis">Manage Permissions</p>
             </ol>
             <ol class="breadcrumb my-0 ms-2 mb-2">
                 <form method="GET" class="row row-cols-lg-auto g-3 align-items-center">
                     <div class="col-12">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="cari" placeholder="Search Roles" value="{{ $cari }}">
+                            <input type="text" class="form-control" name="cari" placeholder="Search Permissions" value="{{ $cari }}">
                         </div>
                     </div>
                     <div class="col-12">

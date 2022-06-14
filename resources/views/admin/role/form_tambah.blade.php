@@ -14,7 +14,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label"> <strong>Name</strong></label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Permission Name">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Role Name">
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label"> <strong>Permissions</strong></label>
