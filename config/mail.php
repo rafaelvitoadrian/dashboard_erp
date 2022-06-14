@@ -115,4 +115,12 @@ return [
         ],
     ],
 
+    'stream' => [
+        'ssl' => [
+            'allow_self_signef' => true,
+            'verify peer' => false,
+            'verify peer name' => false,
+        ],
+    ],
+
 ];
