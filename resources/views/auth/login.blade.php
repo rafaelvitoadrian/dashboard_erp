@@ -93,11 +93,11 @@
                       @csrf
                       <h5 class="mt-5 lgn">Email</h5>
                       <div class="input-group mb-3"><span class="input-group-text">
-                        <input class="form-control" type="text" name="username" placeholder="{{ __('Username') }}" @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}"  required>
+                        <input class="form-control" type="text" name="username" placeholder="m*****@gmail.com" @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}"  required>
                       </div>
                       <h5 class="lgn">Password</h5>
                       <div class="input-group"><span class="input-group-text">
-                        <input class="form-control" type="password" name="password" placeholder="{{ __('Password') }}" @error('password') is-invalid @enderror" required>
+                        <input class="form-control" type="password" name="password" placeholder="*******" @error('password') is-invalid @enderror" required>
                       </div>
                       <div class="text-first">
                         <a href="{{ route('password.request') }}" class="fgp btn btn-link px-0">Forgot Password?</a>
@@ -107,20 +107,19 @@
                           <button class="cb btn btn-primary" type="submit">Login</button>
                       </div>
                       <div class="row">
-                      <div class="pt-3 col-11 text-center">
-                          <a class="sgn px-4">Or Sign In with
-                            <a class="pl-2 btn-sm-6 gog" href={{ route('google.login') }}>
-                              <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32" focusable="false" aria-hidden="true" role="img"><g transform="translate(-1083 -663)"><g transform="translate(530 529)">
-                                <g transform="translate(559 140)"><g transform="translate(0 0)"><path fill="#fbbc05" d="M563.066,367.4a5.808,5.808,0,0,1,.307-1.855l-3.444-2.573a9.87,9.87,0,0,0,0,8.853l3.442-2.577a5.8,5.8,0,0,1-.3-1.848" transform="translate(-558.883 -357.405)"></path><path fill="#ea4335" d="M610.05,144a6,6,0,0,1,3.767,1.317l2.978-2.907a10.358,10.358,0,0,0-15.931,3.069l3.446,2.573A6.019,6.019,0,0,1,610.05,144" transform="translate(-599.818 -139.909)"></path></g></g><path fill="#34a853" d="M610.05,618.791a6.022,6.022,0,0,1-5.742-4.056l-3.444,2.576a10.226,10.226,0,0,0,9.186,5.574,9.872,9.872,0,0,0,6.668-2.494l-3.27-2.475a6.433,6.433,0,0,1-3.4.875" transform="translate(-40.818 -462.896)">
-                                </path><path fill="#4285f4" d="M978.216,469.406a8.16,8.16,0,0,0-.233-1.819h-9.537v3.866h5.489a4.5,4.5,0,0,1-2.09,2.991l3.269,2.475a9.85,9.85,0,0,0,3.1-7.513" transform="translate(-399.215 -319.425)"></path></g></g></svg>
-                              </path></g></g></svg></i><span class="bld">Sign In</span></a>
-                            </a>
-                          </a>
-                        </div>
-                          
                       </div>
                     </form>
-                    <div class="reg text-center pb-4 pt-6 pl-3">
+                    <div class="skn pt-3 text-center">
+                      <a class="sgn">Or Sign In with
+                        <a class="pl-2 btn-sm-6 gog" href="{{ route('google.login') }}">
+                          <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32" focusable="false" aria-hidden="true" role="img"><g transform="translate(-1083 -663)"><g transform="translate(530 529)">
+                            <g transform="translate(559 140)"><g transform="translate(0 0)"><path fill="#fbbc05" d="M563.066,367.4a5.808,5.808,0,0,1,.307-1.855l-3.444-2.573a9.87,9.87,0,0,0,0,8.853l3.442-2.577a5.8,5.8,0,0,1-.3-1.848" transform="translate(-558.883 -357.405)"></path><path fill="#ea4335" d="M610.05,144a6,6,0,0,1,3.767,1.317l2.978-2.907a10.358,10.358,0,0,0-15.931,3.069l3.446,2.573A6.019,6.019,0,0,1,610.05,144" transform="translate(-599.818 -139.909)"></path></g></g><path fill="#34a853" d="M610.05,618.791a6.022,6.022,0,0,1-5.742-4.056l-3.444,2.576a10.226,10.226,0,0,0,9.186,5.574,9.872,9.872,0,0,0,6.668-2.494l-3.27-2.475a6.433,6.433,0,0,1-3.4.875" transform="translate(-40.818 -462.896)">
+                            </path><path fill="#4285f4" d="M978.216,469.406a8.16,8.16,0,0,0-.233-1.819h-9.537v3.866h5.489a4.5,4.5,0,0,1-2.09,2.991l3.269,2.475a9.85,9.85,0,0,0,3.1-7.513" transform="translate(-399.215 -319.425)"></path></g></g></svg>
+                          </path></g></g></svg></i><span class="bld">Sign In</span></a>
+                        </a>
+                      </a>
+                    </div>
+                    <div class="reg text-center pb-2 pt-6 pl-3">
                       <a href="{{ route('register') }}" class=" reg">Don't have account? <span class="ssn"> Sign Up</span></a>
                       
                   </div>

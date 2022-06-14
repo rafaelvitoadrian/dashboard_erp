@@ -9,7 +9,7 @@
     <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
     <meta name="author" content="Łukasz Holeczek">
     <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-    <title>ERP | Login</title>
+    <title>ERP | Register</title>
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('assets/favicon/apple-icon-57x57.png') }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('assets/favicon/apple-icon-60x60.png') }}">
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('assets/favicon/apple-icon-72x72.png') }}">
@@ -55,15 +55,14 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-10">
-              <div class="card mb-4 mx-4 " ">
+              <div class="card mb-4 mx-4">
                 <img src="{{ asset('assets\img\bg4.png') }}" style="border-top-left-radius: 13px; border-top-right-radius: 15px;" class="card-img-top"  alt="Backgorund Image">
                 <div class="card-body py-5 px-5">
                   <form action="{{ route('register') }}" method="POST" class="row sign-up-form form g-3">
                   @csrf
                     <div class="col-md-6">
                       <label for="FirstName" class="form-label"><strong>First Name</strong></label>
-                      
-                      <input type="text" class="form-control" value="{{ old('first_name') }}" placeholder="First Name" name="first_name" id="FirstName" required>
+                      <input type="text" class="form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name') }}" placeholder="First Name" name="first_name" id="FirstName" required>
                       @error('first_name')
                       <div class="valid-feedback">
                           {{ $message }}
@@ -72,7 +71,7 @@
                     </div>
                     <div class="col-md-6">
                       <label for="LastName" class="form-label"><strong>Last Name</strong></label>
-                      <input type="text" class="form-control" value="{{ old('last_name') }}" placeholder="Last Name" name="last_name" id="LastName" required>
+                      <input type="text" class="form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name') }}" placeholder="Last Name" name="last_name" id="LastName" required>
                       @error('last_name')
                       <div class="valid-feedback">
                           {{ $message }}
@@ -90,7 +89,7 @@
                     </div>
                     <div class="col-md-6">
                       <label for="Email" class="form-label"><strong>Email</strong></label>
-                      <input type="email" placeholder="Email" value="{{ old('email') }}" name="email" class="form-control" id="Email" required>
+                      <input type="email" placeholder="Email" value="{{ old('email') }}" name="email" class="form-control @error('email') is-invalid @enderror" id="Email" required>
                       @error('email')
                       <div class="valid-feedback">
                           {{ $message }}
@@ -99,7 +98,7 @@
                     </div>
                     <div class="col-md-6">
                       <label for="Password" class="form-label"><strong>Password</strong></label>
-                      <input type="password" placeholder="Password" name="password" class="form-control" id="Password" required>
+                      <input type="password" placeholder="Password" name="password" class="form-control @error('password') is-invalid @enderror" id="Password" required>
                       @error('password')
                       <div class="valid-feedback">
                           {{ $message }}
@@ -109,11 +108,6 @@
                     <div class="col-md-6">
                       <label for="Password_C" class="form-label"><strong>Confirm Password</strong></label>
                       <input type="password" placeholder="Confirm Passowrd" name="password_confirmation" class="form-control" id="Password_C" required>
-                      @error('email')
-                      <div class="valid-feedback">
-                          {{ $message }}
-                      </div>
-                      @enderror
                     </div>
                     <div class="col-12">
                       <div class="form-check">

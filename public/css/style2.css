@@ -1,0 +1,17 @@
+.line {
+    border: 1px solid;
+    width: 140px;
+}
+
+.mini {
+    font-size: 10px;
+}
+
+.form-select {
+    border: 1px solid #ecf4f4;
+    background-color: #fdffff;
+}
+
+.start {
+    border-left: 2px solid rgba(21, 29, 57, 0.5);
+}
