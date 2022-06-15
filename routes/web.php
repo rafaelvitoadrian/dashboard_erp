@@ -20,6 +20,10 @@ Route::get('/setting', function () {
    return view('dashboard.setting');
 });
 
+// Route::get('/test', function () {
+//    return view('auth.passwords.reset');
+// });
+
 //Route::get('/dashboard/client', function (Request $request) {
 //    return view('client',[
 //        'clients' => $request->user()->clients

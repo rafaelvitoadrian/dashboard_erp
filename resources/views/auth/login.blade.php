@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -28,13 +27,11 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ asset('assets/favicon/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
-    <!-- Icon-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- Vendors styles-->
     <link rel="stylesheet" href="{{ asset('vendors/simplebar/css/simplebar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vendors/simplebar.css') }}">
     <!-- Main styles for this application-->
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <!-- We use those styles to show code examples, you should remove them in your application.-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css">
     <link href="{{ asset('css/examples.css') }}" rel="stylesheet">
@@ -57,81 +54,61 @@
     <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="sipp col-lg-8">
-            <div class="card-group d-block d-md-flex row">
-              @error('email')
-              <div class="text-center alert alert-danger d-flex align-items-center" role="alert">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Danger:">
-                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                </svg>
-                  <div>
-                    {{ $message }}
-                </div>
-              </div>
-            @enderror
-            @error('password')
-              <div class="text-center alert alert-danger d-flex align-items-center" role="alert">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Danger:">
-                  <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                </svg>
-                  <div>
-                    {{ $message }}
-                </div>
-              </div>
-            @enderror
-              <div class="card col-md-7">
-                <div class="card-body">
-                  <div class="card bg-dark text-white">
-                    <img class="card-img sipp" src="assets/img/dashboard5.png">
-                  </div>
-                </div>
-              </div>
-              <div class="card col-sm-5   text-white">
-                <div class="card-body st">
-                  <div class="row=12">
-                    <form class="sign-up-form form" action="{{ route('login') }}" method="POST">
-                      @csrf
-                      <h5 class="mt-5 lgn">Email</h5>
-                      <div class="input-group mb-3"><span class="input-group-text">
-                        <input class="form-control" type="text" name="username" placeholder="Email" @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}"  required>
-                      </div>
-                      <h5 class="lgn">Password</h5>
-                      <div class="input-group"><span class="input-group-text">
-                        <input class="form-control" type="password" name="password" placeholder="Password" @error('password') is-invalid @enderror" required>
-                      </div>
-                      <div class="text-first">
-                        <a href="{{ route('password.request') }}" class="fgp btn btn-link px-0">Forgot Password?</a>
-                        {{-- <button class="btn btn-link px-0" type="button">Forgot password?</button> --}}
-                      </div>
-                      <div class="row cd">
-                          <button class="cb btn btn-primary" type="submit">Login</button>
-                      </div>
-                      <div class="row">
-                      </div>
-                    </form>
-                    <div class="skn pt-3 text-center">
-                      <a class="sgn">Or Sign In with
-                        <a class="pl-2 btn-sm-6 gog" href="{{ route('google.login') }}">
-                          <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32" focusable="false" aria-hidden="true" role="img"><g transform="translate(-1083 -663)"><g transform="translate(530 529)">
-                            <g transform="translate(559 140)"><g transform="translate(0 0)"><path fill="#fbbc05" d="M563.066,367.4a5.808,5.808,0,0,1,.307-1.855l-3.444-2.573a9.87,9.87,0,0,0,0,8.853l3.442-2.577a5.8,5.8,0,0,1-.3-1.848" transform="translate(-558.883 -357.405)"></path><path fill="#ea4335" d="M610.05,144a6,6,0,0,1,3.767,1.317l2.978-2.907a10.358,10.358,0,0,0-15.931,3.069l3.446,2.573A6.019,6.019,0,0,1,610.05,144" transform="translate(-599.818 -139.909)"></path></g></g><path fill="#34a853" d="M610.05,618.791a6.022,6.022,0,0,1-5.742-4.056l-3.444,2.576a10.226,10.226,0,0,0,9.186,5.574,9.872,9.872,0,0,0,6.668-2.494l-3.27-2.475a6.433,6.433,0,0,1-3.4.875" transform="translate(-40.818 -462.896)">
-                            </path><path fill="#4285f4" d="M978.216,469.406a8.16,8.16,0,0,0-.233-1.819h-9.537v3.866h5.489a4.5,4.5,0,0,1-2.09,2.991l3.269,2.475a9.85,9.85,0,0,0,3.1-7.513" transform="translate(-399.215 -319.425)"></path></g></g></svg>
-                          </path></g></g></svg></i><span class="bld">Sign In</span></a>
-                        </a>
-                      </a>
+          <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="{{ asset('assets/img/dashboard5.png') }}" class="img-fluid rounded-start" alt="...">
                     </div>
-                    <div class="reg text-center pb-2 pt-6 pl-3">
-                      <a href="{{ route('register') }}" class=" reg">Don't have account? <span class="ssn"> Sign Up</span></a>
-                      
-                  </div>
-                  </div>
+                    <div class="col-md-6 align-self-center">
+                        <div class="card-body pt-5">
+                            <form method="POST" action="{{ route('login') }}" class="row sign-up-form form g-3">
+                                @csrf
+                                <div class="col-md-12">
+                                    <label for="email" class="form-label"><strong>{{ __('Email Address') }}</strong></label>
+                                    <input id="email" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus placeholder="email@email.com">
+                                    @error('username')
+                                    <span class="valid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="password" class="form-label"><strong>{{ __('Password') }}</strong></label>
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="*********">
+                                    <a style="font-size:13px;" href="{{ route('password.request') }}" class="text-medium-emphasis">{{ __('Forgot Your Password?') }}</a>
+                                    @error('password')
+                                    <span class="valid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary">{{ __('Login') }}</button>
+                                </div>
+                                <div class="col-md-12 d-flex align-items-center d-grid gap-2 justify-content-center">
+                                  <div class="p-2">
+                                      <p class="text-medium-emphasis">Or Sign up with</p>
+                                  </div>
+                                  <div class="p-2">
+                                    <a href="{{ route('google.login') }}" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-google" viewBox="0 0 16 17">
+                                      <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
+                                    </svg> Sign Up</a>
+                                  </div>
+                                </div>
+                                <div class="col-md-12">
+                                  <p class="text-center">Dont have account? <a href="{{ route('register') }}">Sign up</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- CoreUI and necessary plugins-->
+      <!-- CoreUI and necessary plugins-->
     <script src="{{ asset('vendors/@coreui/coreui/js/coreui.bundle.min.js') }}"></script>
     <script src="{{ asset('vendors/simplebar/js/simplebar.min.js') }}"></script>
     <script>
