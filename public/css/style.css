@@ -5188,7 +5188,7 @@ html:not([dir=rtl]) .navbar-nav {
     background-color: var(--cui-card-bg, #fff);
     background-clip: border-box;
     border: 1px solid var(--cui-card-border-color, rgba(0, 0, 21, 0.125));
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .card>hr {

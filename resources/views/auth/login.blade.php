@@ -57,7 +57,7 @@
           <div class="col-md-8">
               <div class="card mb-3">
                 <div class="row g-0">
-                    <div class="col-md-6">
+                    <div class="col-md-6 d-none d-lg-block">
                         <img src="{{ asset('assets/img/dashboard5.png') }}" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-6 align-self-center">
