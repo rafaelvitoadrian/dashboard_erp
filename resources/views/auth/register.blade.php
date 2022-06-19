@@ -56,7 +56,7 @@
         <div class="row justify-content-center">
           <div class="col-md-10">
               <div class="card mb-4 mx-4">
-                <img src="{{ asset('assets\img\bg4.png') }}" style="border-top-left-radius: 13px; border-top-right-radius: 15px;" class="card-img-top"  alt="Backgorund Image">
+                <img src="{{ asset('assets\img\bg4.png') }}" style="border-top-left-radius: 13px; border-top-right-radius: 15px;" class="card-img-top d-none d-lg-block"  alt="Backgorund Image">
                 <div class="card-body py-5 px-5">
                   <form action="{{ route('register') }}" method="POST" class="row sign-up-form form g-3">
                   @csrf

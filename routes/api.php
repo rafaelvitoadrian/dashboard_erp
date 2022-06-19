@@ -22,5 +22,4 @@ use App\Http\Controllers\API\UserAPIController;
 Route::middleware('auth:api', 'scopes:user-view')->get('/user', [\App\Http\Controllers\UserController::class,'index']
 );
 
-Route::get('/user/active/count', [UserAPIController::class, 'SumActiveUser'])->middleware('guest');
-
+Route::get('/user/active/count', [UserAPIController::class, 'SumActiveUser']);

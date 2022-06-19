@@ -34,7 +34,7 @@
   direction: inherit !important;
   box-sizing: inherit !important;
   resize: none !important;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   bottom: 0;
