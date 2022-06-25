@@ -25,4 +25,5 @@
 ## Real Source
 Real source in bitbucket : '''https://bitbucket.org/rafaelvito11/dashboard-erp/src/master/'''
 
-## THow To Connect in SSO/OAuth 2.0 this dashbiard : https://github.com/rafaelvitoadrian/erp_kelompok2_client
+## How To Connect in SSO/OAuth 2.0 this dashbiard 
+View this link : https://github.com/rafaelvitoadrian/erp_kelompok2_client
