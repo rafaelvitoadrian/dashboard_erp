@@ -22,5 +22,7 @@
  4. Sematkan pesan commit sesuai docs github (agar terhubung dengan issue yang dibuat) (pelajari: https://github.blog/2011-04-09-issues-2-0-the-next-generation/ https://stackoverflow.com/questions/1687262/link-to-the-issue-number-on-github-within-a-commit-message)
  5. Dilarang ikut campur terhadap branch orang lain (ditakutkan terjadi conflict) jika ingin memberi masukkan bisa via issue comment 
 
-## Install Laravel
+## Real Source
 Real source in bitbucket : '''https://bitbucket.org/rafaelvito11/dashboard-erp/src/master/'''
+
+## THow To Connect in SSO/OAuth 2.0 this dashbiard : https://github.com/rafaelvitoadrian/erp_kelompok2_client
